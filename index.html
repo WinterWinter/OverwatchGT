@@ -141,6 +141,13 @@ input[type=button] {
 
   <div class="sections">
     <h1 class="head">Weather</h1>
+    
+    <p class="weather">API Key
+        <input id="apiKey" type="text">
+        <footer class="foot">An API key is required to fetch OpenWeatherMap data. These can be freely obtained from OpenWeatherMap.org.</footer>
+      </p>
+      
+      <hr width="95%">
 
     <p class="weather">Temperature Scale
       <select id="scale">
@@ -180,6 +187,7 @@ input[type=button] {
    var vibrate = document.getElementById("vibrate");
    var interval = document.getElementById("interval_choice");
    var flick = document.getElementById("flick_choice");
+   var apiKey = document.getElementById("apiKey");
 
    // Make a data object to be sent, coercing value types to integers
    var options = {
@@ -189,6 +197,7 @@ input[type=button] {
      "vibrate": vibrate.value, 
      "interval": interval.value,
      "flick": flick.value,
+     "apiKey": apiKey.value
    };
 
    localStorage["scale"] = options["scale"];
@@ -197,6 +206,7 @@ input[type=button] {
    localStorage["vibrate"] = options["vibrate"];
    localStorage["interval"] = options["interval"];
    localStorage["flick"] = options["flick"];
+   localStorage["apiKey"] = options["apiKey"];
 
    // Determine the correct return URL (emulator vs real watch)
    function getQueryParam(variable, defaultValue) {
@@ -223,6 +233,7 @@ input[type=button] {
    var vibrate = document.getElementById("vibrate");
    var interval = document.getElementById("interval_choice");
    var flick = document.getElementById("flick_choice");
+   var apiKey = document.getElementById("apiKey");
 
    // Load any previously saved configuration, if available
    if (localStorage["scale"]) {
@@ -232,6 +243,7 @@ input[type=button] {
      vibrate.value = localStorage["vibrate"];
      interval.value = localStorage["interval"];
      flick.value = localStorage["flick"];
+     apiKey.value = localStorage["apiKey"];
    }
  })();
 
