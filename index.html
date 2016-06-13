@@ -142,9 +142,17 @@ input[type=button] {
   <div class="sections">
     <h1 class="head">Weather</h1>
     
+    <p class="weather">Provider
+      <select id="provider">
+        <option value="0">Openweathermap</option>
+        <option value="1">Weather Underground</option>
+      </select>
+      
+      <hr width="95%">
+    
     <p class="weather">API Key
         <input id="apiKey" type="text">
-        <footer class="foot">An API key is required to fetch OpenWeatherMap data. These can be freely obtained from OpenWeatherMap.org.</footer>
+        <footer class="foot">An API key is required to fetch weather data. These can be freely obtained from OpenWeatherMap.org or WUnderground.com.</footer>
       </p>
       
       <hr width="95%">
@@ -188,6 +196,7 @@ input[type=button] {
    var interval = document.getElementById("interval_choice");
    var flick = document.getElementById("flick_choice");
    var apiKey = document.getElementById("apiKey");
+   var provider = document.getElementById("provider");
 
    // Make a data object to be sent, coercing value types to integers
    var options = {
@@ -197,7 +206,8 @@ input[type=button] {
      "vibrate": vibrate.value, 
      "interval": interval.value,
      "flick": flick.value,
-     "apiKey": apiKey.value
+     "apiKey": apiKey.value,
+     "provider": provider.value
    };
 
    localStorage["scale"] = options["scale"];
@@ -207,6 +217,7 @@ input[type=button] {
    localStorage["interval"] = options["interval"];
    localStorage["flick"] = options["flick"];
    localStorage["apiKey"] = options["apiKey"];
+   localStorage["provider"] = options["provider"];
 
    // Determine the correct return URL (emulator vs real watch)
    function getQueryParam(variable, defaultValue) {
@@ -234,6 +245,7 @@ input[type=button] {
    var interval = document.getElementById("interval_choice");
    var flick = document.getElementById("flick_choice");
    var apiKey = document.getElementById("apiKey");
+   var provider = document.getElementById("provider");
 
    // Load any previously saved configuration, if available
    if (localStorage["scale"]) {
@@ -244,6 +256,7 @@ input[type=button] {
      interval.value = localStorage["interval"];
      flick.value = localStorage["flick"];
      apiKey.value = localStorage["apiKey"];
+     provider.value = localStorage["provider"];
    }
  })();
 
