@@ -5,17 +5,30 @@
 #define KEY_TEMPERATURE 3
 #define KEY_VIBRATE 4
 #define KEY_HERO 5
-
+#define KEY_INTERVAL 6
+#define KEY_FLICK 7
+#define KEY_PROVIDER 8
 
 static Window *s_main_window;
 static TextLayer *s_time_layer;
+
+static TextLayer *text_battery_layer;
+static TextLayer *text_bluetooth_layer;
+
+static int battery_level;
+
+static bool toggle = true;
+
+int weather_interval = 30;
+int flick = 1;
+int provider;
+time_t auto_hide;
 
 static bool initiate_watchface = true;
 
 static TextLayer *day_layer;
 static TextLayer *temperature_layer;
 static TextLayer *high_noon_layer;
-
 
 static GFont s_time_font;
 static GFont all_font;
@@ -60,11 +73,54 @@ static GBitmap *ui_images[TOTAL_UI];
 static BitmapLayer *ui_layers[TOTAL_UI];
 
 const int ui[] = {
-    RESOURCE_ID_Morning_UI,
-    RESOURCE_ID_Day_UI,
-    RESOURCE_ID_Evening_UI,
-    RESOURCE_ID_Night_UI
+  RESOURCE_ID_Morning_UI,
+  RESOURCE_ID_Day_UI,
+  RESOURCE_ID_Evening_UI,
+  RESOURCE_ID_Night_UI
 };
+
+static void show (){
+        layer_set_hidden(text_layer_get_layer(text_bluetooth_layer), true);
+        layer_set_hidden(text_layer_get_layer(text_battery_layer), true);
+        layer_set_hidden(text_layer_get_layer(day_layer), false);
+        layer_set_hidden(text_layer_get_layer(temperature_layer), false);
+}
+
+static void handle_tap(AccelAxisType axis, int32_t direction)
+{
+  
+  if(flick == 1){
+    if(toggle){
+      layer_set_hidden(text_layer_get_layer(text_bluetooth_layer), false);
+      layer_set_hidden(text_layer_get_layer(text_battery_layer), false);
+      layer_set_hidden(text_layer_get_layer(day_layer), true);
+      layer_set_hidden(text_layer_get_layer(temperature_layer), true);
+      toggle = false;
+    }
+    else{
+      layer_set_hidden(text_layer_get_layer(text_bluetooth_layer), true);
+      layer_set_hidden(text_layer_get_layer(text_battery_layer), true);
+      layer_set_hidden(text_layer_get_layer(day_layer), false);
+      layer_set_hidden(text_layer_get_layer(temperature_layer), false);
+      toggle = true;
+    }
+  }
+  else if(flick == 2){
+      app_timer_register(4000, show, NULL);
+      layer_set_hidden(text_layer_get_layer(text_bluetooth_layer), false);
+      layer_set_hidden(text_layer_get_layer(text_battery_layer), false);
+      layer_set_hidden(text_layer_get_layer(day_layer), true);
+      layer_set_hidden(text_layer_get_layer(temperature_layer), true);
+  } 
+}
+  
+
+static void battery_callback(BatteryChargeState state) {
+  battery_level = state.charge_percent;
+  static char battery_buffer[32];
+  snprintf(battery_buffer, sizeof(battery_buffer), "%d", battery_level);
+  text_layer_set_text(text_battery_layer, battery_buffer);
+}
 
 static void set_container_image(GBitmap **bmp_image, BitmapLayer *bmp_layer, const int resource_id, GPoint origin) 
 {
@@ -86,9 +142,10 @@ GBitmap *old_image = *bmp_image;
 static void handle_bluetooth(bool connected) 
 {	
 if (connected) {
+  
+    text_layer_set_text(text_bluetooth_layer, "On");
 
 		if (!initiate_watchface) {//watch becomes connected after watchface is already loaded
-			vibes_double_pulse();
       DictionaryIterator *iter;
       app_message_outbox_begin(&iter);
       dict_write_uint8(iter, 0, 0);
@@ -96,6 +153,8 @@ if (connected) {
 		}
 	}
 	else {
+    
+    text_layer_set_text(text_bluetooth_layer, "Off");
 
 		if (!initiate_watchface) {//becomes disconnected while watchface is already loaded     
 			vibes_enqueue_custom_pattern( (VibePattern) {
@@ -157,19 +216,20 @@ static void update_bg(struct tm *current_time) {
   
   if (current_time->tm_hour >= 5 && current_time->tm_hour < 12){
     //Morning
-    set_container_image(&ui_images[0], ui_layers[0], ui[0], GPoint(0,0));
+  set_container_image(&ui_images[0], ui_layers[0], ui[0], GPoint( 0, 0));
   }
   else if (current_time->tm_hour >= 12 && current_time->tm_hour < 17){
     //Day
-    set_container_image(&ui_images[0], ui_layers[0], ui[1], GPoint(0,0));
+  set_container_image(&ui_images[0], ui_layers[0], ui[1], GPoint( 0, 0));
   }
   else if (current_time->tm_hour >= 17 && current_time->tm_hour < 21){
     //Evening
-    set_container_image(&ui_images[0], ui_layers[0], ui[2], GPoint(0,0));
+  set_container_image(&ui_images[0], ui_layers[0], ui[2], GPoint( 0, 0));
+
   } 
   else if (current_time->tm_hour >= 21 || current_time->tm_hour < 5){
     //Night
-    set_container_image(&ui_images[0], ui_layers[0], ui[3], GPoint(0,0));
+  set_container_image(&ui_images[0], ui_layers[0], ui[3], GPoint( 0, 0));
   }
 }
 
@@ -184,12 +244,25 @@ static void hourly_vibrate(struct tm *current_time){
 
 static void tick_handler(struct tm *tick_time, TimeUnits units_changed) {
   update_time();
+  
   if(hero_choice == 21){
     update_display(tick_time);
     }
+  
+  weather_interval = persist_read_int(KEY_INTERVAL);
+  
+  if(tick_time->tm_min % weather_interval == 0) {
+    DictionaryIterator *iter;
+    app_message_outbox_begin(&iter);
+    dict_write_uint8(iter, 0, 0);
+    app_message_outbox_send();
+    //APP_LOG(APP_LOG_LEVEL_DEBUG, "Weather updated.");
+  }
+  
   update_bg(tick_time);
   hourly_vibrate(tick_time);
 }
+
 
 static void inbox_received_callback(DictionaryIterator *iterator, void *context) 
 {
@@ -222,17 +295,34 @@ static void inbox_received_callback(DictionaryIterator *iterator, void *context)
         app_message_outbox_send();
       }
       break;
+    case KEY_PROVIDER:
+      provider = atoi( t->value->cstring );
+      persist_write_int(KEY_PROVIDER, provider);
+      break;
+
     case KEY_TEMPERATURE:
       
-      if(scale_option == 0){
-      temperature = t->value->int32;
-      finalTemp = (temperature - 273.15) * 1.8 + 32;
-      snprintf(temperature_buffer, sizeof(temperature_buffer), "%d°", finalTemp);
+      if(provider == 0){
+        if(scale_option == 0){
+        temperature = t->value->int32;
+        finalTemp = (temperature - 273.15) * 1.8 + 32;
+        snprintf(temperature_buffer, sizeof(temperature_buffer), "%d°", finalTemp);
+        }
+        else if(scale_option == 1){
+        temperature = t->value->int32;
+        finalTemp = temperature - 273.15;
+        snprintf(temperature_buffer, sizeof(temperature_buffer), "%d°", finalTemp);
+        }
       }
-      else if(scale_option == 1){
-      temperature = t->value->int32;
-      finalTemp = temperature - 273.15;
-      snprintf(temperature_buffer, sizeof(temperature_buffer), "%d°", finalTemp);
+      else if (provider == 1){
+        if(scale_option == 0){
+        temperature = t->value->int32;
+        snprintf(temperature_buffer, sizeof(temperature_buffer), "%d°", temperature);
+        }
+        else if(scale_option == 1){
+        temperature = t->value->int32;
+        snprintf(temperature_buffer, sizeof(temperature_buffer), "%d°", temperature);
+        }
       }
       break;
       
@@ -253,6 +343,22 @@ static void inbox_received_callback(DictionaryIterator *iterator, void *context)
       if(hero_choice < 21){
       set_container_image(&hero_images[0], hero_layers[0], hero[hero_choice], GPoint( PBL_IF_ROUND_ELSE(18, 0), PBL_IF_ROUND_ELSE(6, 0)));
       }
+      
+      break;
+      
+      case KEY_INTERVAL:
+        
+      weather_interval = atoi( t->value->cstring );
+      persist_write_int(KEY_INTERVAL, weather_interval);
+      //APP_LOG(APP_LOG_LEVEL_INFO, "Weather Interval: %d", weather_interval);
+      
+      break;
+      
+      case KEY_FLICK:
+        
+      flick = atoi( t->value->cstring );
+      persist_write_int(KEY_FLICK, flick);
+      //APP_LOG(APP_LOG_LEVEL_INFO, "Flick: %d", flick);
       
       break;
   }
@@ -314,11 +420,26 @@ static void main_window_load(Window *window) {
   
   GRect dummy_frame = { {0, 0}, {0, 0} };
   
+  // Battery
+  text_battery_layer = text_layer_create(GRect(PBL_IF_ROUND_ELSE(84, 72), PBL_IF_ROUND_ELSE(138, 137), 72, 25));
+  text_layer_set_background_color(text_battery_layer, GColorClear);
+  text_layer_set_text_color(text_battery_layer, GColorWhite);
+  text_layer_set_text_alignment(text_battery_layer, GTextAlignmentCenter);
+  
+  // Bluetooth
+  text_bluetooth_layer = text_layer_create(GRect( PBL_IF_ROUND_ELSE(25, 0), PBL_IF_ROUND_ELSE(138, 137), 72, 25));
+  text_layer_set_background_color(text_bluetooth_layer, GColorClear);
+  text_layer_set_text_color(text_bluetooth_layer, GColorWhite);
+  text_layer_set_text_alignment(text_bluetooth_layer, GTextAlignmentCenter);
+  
+  layer_set_hidden(text_layer_get_layer(text_bluetooth_layer), true);
+  layer_set_hidden(text_layer_get_layer(text_battery_layer), true);
+
   for (int i = 0; i < TOTAL_UI; ++i) {
    	ui_layers[i] = bitmap_layer_create(dummy_frame);
    	layer_add_child(window_layer, bitmap_layer_get_layer(ui_layers[i]));
     bitmap_layer_set_compositing_mode(ui_layers[i], GCompOpSet);
-  }
+  }  
   
   for (int i = 0; i < TOTAL_HERO; ++i) {
    	hero_layers[i] = bitmap_layer_create(dummy_frame);
@@ -335,12 +456,15 @@ static void main_window_load(Window *window) {
   text_layer_set_font(high_noon_layer, s_time_font);
   text_layer_set_font(day_layer, all_font);
   text_layer_set_font(temperature_layer, all_font);
+  text_layer_set_font(text_battery_layer, all_font);
+  text_layer_set_font(text_bluetooth_layer, all_font);
   
   layer_add_child(window_layer, text_layer_get_layer(day_layer));
   layer_add_child(window_layer, text_layer_get_layer(s_time_layer));
   layer_add_child(window_layer, text_layer_get_layer(high_noon_layer));
   layer_add_child(window_layer, text_layer_get_layer(temperature_layer));
-
+  layer_add_child(window_layer, text_layer_get_layer(text_battery_layer));
+  layer_add_child(window_layer, text_layer_get_layer(text_bluetooth_layer));
 }
 
 static void main_window_unload(Window *window) {
@@ -349,6 +473,8 @@ static void main_window_unload(Window *window) {
   text_layer_destroy(day_layer);
   text_layer_destroy(temperature_layer);
   text_layer_destroy(high_noon_layer);
+  text_layer_destroy(text_battery_layer);
+  text_layer_destroy(text_bluetooth_layer);
 
   // Unload GFont
   fonts_unload_custom_font(s_time_font);
@@ -384,6 +510,9 @@ static void init() {
   // Make sure the time is displayed from the start
   update_time();
   
+  flick = persist_read_int(KEY_FLICK);
+  provider = persist_read_int(KEY_PROVIDER);
+  
   time_t now = time(NULL);
  	struct tm *tick_time = localtime(&now);
   
@@ -399,8 +528,15 @@ static void init() {
   update_bg(tick_time);
   initiate_watchface = false;
   
+  // Register for battery level updates
+  battery_state_service_subscribe(battery_callback);
+  // Ensure battery level is displayed from the start
+  battery_callback(battery_state_service_peek());
+  
   handle_bluetooth(bluetooth_connection_service_peek());
   bluetooth_connection_service_subscribe(&handle_bluetooth);
+  
+  accel_tap_service_subscribe(&handle_tap);
 
   // Register with TickTimerService
   tick_timer_service_subscribe(MINUTE_UNIT, tick_handler);
@@ -424,5 +560,6 @@ static void deinit() {
 int main(void) {
   init();
   app_event_loop();
+  bluetooth_connection_service_subscribe(&handle_bluetooth);
   deinit();
 }

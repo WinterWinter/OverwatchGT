@@ -1,0 +1,203 @@
+{
+    "author": "Game Time",
+    "dependencies": {},
+    "keywords": [],
+    "name": "overwatch-gt",
+    "pebble": {
+        "capabilities": [
+            "location",
+            "configurable"
+        ],
+        "displayName": "Overwatch GT",
+        "enableMultiJS": false,
+        "messageKeys": {
+            "KEY_FLICK": 7,
+            "KEY_HERO": 5,
+            "KEY_INTERVAL": 6,
+            "KEY_PROVIDER": 8,
+            "KEY_SCALE": 1,
+            "KEY_SCALE_OPTION": 2,
+            "KEY_TEMPERATURE": 3,
+            "KEY_VIBRATE": 4
+        },
+        "projectType": "native",
+        "resources": {
+            "media": [
+                {
+                    "file": "images/NightUI Round.png",
+                    "name": "Night_UI",
+                    "targetPlatforms": null,
+                    "type": "png"
+                },
+                {
+                    "file": "images/Morning UI Round.png",
+                    "name": "Morning_UI",
+                    "targetPlatforms": null,
+                    "type": "png"
+                },
+                {
+                    "file": "images/Evening UI Round.png",
+                    "name": "Evening_UI",
+                    "targetPlatforms": null,
+                    "type": "png"
+                },
+                {
+                    "file": "images/Day UI Round.png",
+                    "name": "Day_UI",
+                    "targetPlatforms": null,
+                    "type": "png"
+                },
+                {
+                    "file": "images/Menu.png",
+                    "menuIcon": true,
+                    "name": "Menu",
+                    "targetPlatforms": null,
+                    "type": "png"
+                },
+                {
+                    "file": "images/McCree.png",
+                    "name": "McCree",
+                    "targetPlatforms": null,
+                    "type": "png"
+                },
+                {
+                    "file": "images/Reinhardt.png",
+                    "name": "Reinhardt",
+                    "targetPlatforms": null,
+                    "type": "png"
+                },
+                {
+                    "file": "images/Torbjorn.png",
+                    "name": "Torbjorn",
+                    "targetPlatforms": null,
+                    "type": "png"
+                },
+                {
+                    "file": "images/Zenyatta.png",
+                    "name": "Zenyatta",
+                    "targetPlatforms": null,
+                    "type": "png"
+                },
+                {
+                    "file": "images/Zarya.png",
+                    "name": "Zarya",
+                    "targetPlatforms": null,
+                    "type": "png"
+                },
+                {
+                    "file": "images/Winston.png",
+                    "name": "Winston",
+                    "targetPlatforms": null,
+                    "type": "png"
+                },
+                {
+                    "file": "images/Widowmaker.png",
+                    "name": "Widowmaker",
+                    "targetPlatforms": null,
+                    "type": "png"
+                },
+                {
+                    "file": "images/Tracer.png",
+                    "name": "Tracer",
+                    "targetPlatforms": null,
+                    "type": "png"
+                },
+                {
+                    "file": "images/Symmetra.png",
+                    "name": "Symmetra",
+                    "targetPlatforms": null,
+                    "type": "png"
+                },
+                {
+                    "file": "images/Soldier76.png",
+                    "name": "Soldier76",
+                    "targetPlatforms": null,
+                    "type": "png"
+                },
+                {
+                    "file": "images/Roadhog.png",
+                    "name": "Roadhog",
+                    "targetPlatforms": null,
+                    "type": "png"
+                },
+                {
+                    "file": "images/Reaper.png",
+                    "name": "Reaper",
+                    "targetPlatforms": null,
+                    "type": "png"
+                },
+                {
+                    "file": "images/Pharah.png",
+                    "name": "Pharah",
+                    "targetPlatforms": null,
+                    "type": "png"
+                },
+                {
+                    "file": "images/Mercy.png",
+                    "name": "Mercy",
+                    "targetPlatforms": null,
+                    "type": "png"
+                },
+                {
+                    "file": "images/Mei.png",
+                    "name": "Mei",
+                    "targetPlatforms": null,
+                    "type": "png"
+                },
+                {
+                    "file": "images/Lucio.png",
+                    "name": "Lucio",
+                    "targetPlatforms": null,
+                    "type": "png"
+                },
+                {
+                    "file": "images/Junkrat.png",
+                    "name": "Junkrat",
+                    "targetPlatforms": null,
+                    "type": "png"
+                },
+                {
+                    "file": "images/Hanzo.png",
+                    "name": "Hanzo",
+                    "targetPlatforms": null,
+                    "type": "png"
+                },
+                {
+                    "file": "images/Genji.png",
+                    "name": "Genji",
+                    "targetPlatforms": null,
+                    "type": "png"
+                },
+                {
+                    "file": "images/Dva.png",
+                    "name": "Dva",
+                    "targetPlatforms": null,
+                    "type": "png"
+                },
+                {
+                    "file": "images/Bastion.png",
+                    "name": "Bastion",
+                    "targetPlatforms": null,
+                    "type": "png"
+                },
+                {
+                    "file": "fonts/Time.ttf",
+                    "name": "TIME_40",
+                    "targetPlatforms": null,
+                    "type": "font"
+                }
+            ]
+        },
+        "sdkVersion": "3",
+        "targetPlatforms": [
+            "aplite",
+            "basalt",
+            "chalk"
+        ],
+        "uuid": "92368a72-5aea-4283-a61b-d8599b0a156a",
+        "watchapp": {
+            "watchface": true
+        }
+    },
+    "version": "1.4.0"
+}
