@@ -447,8 +447,62 @@
                     "type": "png"
                 },
                 {
+                    "file": "images/Tracer Electric Purple.png",
+                    "name": "Tracer_EP",
+                    "targetPlatforms": null,
+                    "type": "png"
+                },
+                {
+                    "file": "images/Tracer Hot Pink.png",
+                    "name": "Tracer_HP",
+                    "targetPlatforms": null,
+                    "type": "png"
+                },
+                {
+                    "file": "images/Tracer Neon Green.png",
+                    "name": "Tracer_NG",
+                    "targetPlatforms": null,
+                    "type": "png"
+                },
+                {
+                    "file": "images/Tracer Posh.png",
+                    "name": "Tracer_Posh",
+                    "targetPlatforms": null,
+                    "type": "png"
+                },
+                {
+                    "file": "images/Tracer Royal Blue.png",
+                    "name": "Tracer_RB",
+                    "targetPlatforms": null,
+                    "type": "png"
+                },
+                {
                     "file": "images/Widowmaker.png",
                     "name": "Widowmaker",
+                    "targetPlatforms": null,
+                    "type": "png"
+                },
+                {
+                    "file": "images/Widowmaker Ciel.png",
+                    "name": "Widowmaker_Ciel",
+                    "targetPlatforms": null,
+                    "type": "png"
+                },
+                {
+                    "file": "images/Widowmaker Rose.png",
+                    "name": "Widowmaker_Rose",
+                    "targetPlatforms": null,
+                    "type": "png"
+                },
+                {
+                    "file": "images/Widowmaker Vert.png",
+                    "name": "Widowmaker_Vert",
+                    "targetPlatforms": null,
+                    "type": "png"
+                },
+                {
+                    "file": "images/Widowmaker Winter.png",
+                    "name": "Widowmaker_Winter",
                     "targetPlatforms": null,
                     "type": "png"
                 },
@@ -459,8 +513,62 @@
                     "type": "png"
                 },
                 {
+                    "file": "images/Winston Atmosphere.png",
+                    "name": "Winston_Atmosphere",
+                    "targetPlatforms": null,
+                    "type": "png"
+                },
+                {
+                    "file": "images/Winston Banana.png",
+                    "name": "Winston_Banana",
+                    "targetPlatforms": null,
+                    "type": "png"
+                },
+                {
+                    "file": "images/Winston Forest.png",
+                    "name": "Winston_Forest",
+                    "targetPlatforms": null,
+                    "type": "png"
+                },
+                {
+                    "file": "images/Winston Red Planet.png",
+                    "name": "Winston_RP",
+                    "targetPlatforms": null,
+                    "type": "png"
+                },
+                {
                     "file": "images/Zarya.png",
                     "name": "Zarya",
+                    "targetPlatforms": null,
+                    "type": "png"
+                },
+                {
+                    "file": "images/Zarya Brick.png",
+                    "name": "Zarya_Brick",
+                    "targetPlatforms": null,
+                    "type": "png"
+                },
+                {
+                    "file": "images/Zarya Dawn.png",
+                    "name": "Zarya_Dawn",
+                    "targetPlatforms": null,
+                    "type": "png"
+                },
+                {
+                    "file": "images/Zarya Goldenrod.png",
+                    "name": "Zarya_Goldenrod",
+                    "targetPlatforms": null,
+                    "type": "png"
+                },
+                {
+                    "file": "images/Zarya Targa.png",
+                    "name": "Zarya_Targa",
+                    "targetPlatforms": null,
+                    "type": "png"
+                },
+                {
+                    "file": "images/Zarya Violet.png",
+                    "name": "Zarya_Violet",
                     "targetPlatforms": null,
                     "type": "png"
                 },
@@ -471,8 +579,56 @@
                     "type": "png"
                 },
                 {
+                    "file": "images/Zenyatta Air.png",
+                    "name": "Zenyatta_Air",
+                    "targetPlatforms": null,
+                    "type": "png"
+                },
+                {
+                    "file": "images/Zenyatta Ascendant.png",
+                    "name": "Zenyatta_Ascendant",
+                    "targetPlatforms": null,
+                    "type": "png"
+                },
+                {
+                    "file": "images/Zenyatta Leaf.png",
+                    "name": "Zenyatta_Leaf",
+                    "targetPlatforms": null,
+                    "type": "png"
+                },
+                {
+                    "file": "images/Zenyatta Water.png",
+                    "name": "Zenyatta_Water",
+                    "targetPlatforms": null,
+                    "type": "png"
+                },
+                {
                     "file": "images/Torbjorn.png",
                     "name": "Torbjorn",
+                    "targetPlatforms": null,
+                    "type": "png"
+                },
+                {
+                    "file": "images/Torbjorn Bla.png",
+                    "name": "Torbjorn_Bla",
+                    "targetPlatforms": null,
+                    "type": "png"
+                },
+                {
+                    "file": "images/Torbjorn Citron.png",
+                    "name": "Torbjorn_Citron",
+                    "targetPlatforms": null,
+                    "type": "png"
+                },
+                {
+                    "file": "images/Torbjorn Gron.png",
+                    "name": "Torbjorn_Gron",
+                    "targetPlatforms": null,
+                    "type": "png"
+                },
+                {
+                    "file": "images/Torbjorn Plommon.png",
+                    "name": "Torbjorn_Plommon",
                     "targetPlatforms": null,
                     "type": "png"
                 },
@@ -483,8 +639,50 @@
                     "type": "png"
                 },
                 {
+                    "file": "images/Reinhardt Blackhardt.png",
+                    "name": "Reinhardt_Blackhardt",
+                    "targetPlatforms": null,
+                    "type": "png"
+                },
+                {
+                    "file": "images/Reinhardt Cobalt.png",
+                    "name": "Reinhardt_Cobalt",
+                    "targetPlatforms": null,
+                    "type": "png"
+                },
+                {
+                    "file": "images/Reinhardt Veridian.png",
+                    "name": "Reinhardt_Veridian",
+                    "targetPlatforms": null,
+                    "type": "png"
+                },
+                {
                     "file": "images/McCree.png",
                     "name": "McCree",
+                    "targetPlatforms": null,
+                    "type": "png"
+                },
+                {
+                    "file": "images/McCree Lake.png",
+                    "name": "McCree_Lake",
+                    "targetPlatforms": null,
+                    "type": "png"
+                },
+                {
+                    "file": "images/McCree Sage.png",
+                    "name": "McCree_Sage",
+                    "targetPlatforms": null,
+                    "type": "png"
+                },
+                {
+                    "file": "images/McCree Wheat.png",
+                    "name": "McCree_Wheat",
+                    "targetPlatforms": null,
+                    "type": "png"
+                },
+                {
+                    "file": "images/McCree White Hat.png",
+                    "name": "McCree_WH",
                     "targetPlatforms": null,
                     "type": "png"
                 },
