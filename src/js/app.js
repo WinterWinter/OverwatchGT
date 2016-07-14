@@ -1,7 +1,45 @@
 var city = "";
-var apiKey = null;
+var apiKey = null; //b0ee87cfeac784b1 wunderground : 4f4f0b5ecd03fb8e857be86378159a38 openweather
 var provider = null;
 var scale = null;
+
+var Clay = require('pebble-clay');
+var clayConfig = require('./config');
+var clay = new Clay(clayConfig, null, { autoHandleEvents: false });
+
+Pebble.addEventListener('showConfiguration', function(e) {
+
+  Pebble.openURL(clay.generateUrl());
+});
+
+var messageKeys = require('message_keys');
+
+Pebble.addEventListener('webviewclosed', function(e) {
+  if (e && !e.response) {
+    return;
+  }
+
+  // Get the keys and values from each config item
+  var dict = clay.getSettings(e.response);
+  
+  city = dict[messageKeys.City];
+  apiKey = dict[messageKeys.API];
+  provider = dict[messageKeys.Provider];
+  scale = dict[messageKeys.Scale];
+  
+  localStorage.city = city;
+  localStorage.apiKey = apiKey;
+  localStorage.provider = provider;
+  localStorage.scale = scale;
+
+  // Send settings values to watch side
+  Pebble.sendAppMessage(dict, function(e) {
+    //console.log('Sent config data to Pebble');
+  }, function(e) {
+    //console.log('Failed to send config data!');
+    //console.log(JSON.stringify(e));
+  });
+});
 
 var xhrRequest = function (url, type, callback) {
   var xhr = new XMLHttpRequest();
@@ -12,15 +50,22 @@ var xhrRequest = function (url, type, callback) {
   xhr.send();
 };
 
-
 function locationSuccess(pos) {
   // Construct URL
   var url;
+  var opScale;
+  
+  if (scale === "C"){
+    opScale = "metric";
+  }
+  else if (scale === "F"){
+    opScale = "imperial";
+  }
     
   if (pos !== undefined) {
     
     if(provider === '0'){
-      url = "http://api.openweathermap.org/data/2.5/weather?lat=" + pos.coords.latitude + "&lon=" + pos.coords.longitude + '&appid=' + apiKey;
+      url = "http://api.openweathermap.org/data/2.5/weather?lat=" + pos.coords.latitude + "&lon=" + pos.coords.longitude + '&appid=' + apiKey + '&units=' + opScale;
     }
     else{ 
       url = 'http://api.wunderground.com/api/' + apiKey + '/forecast/geolookup/conditions/q/' + pos.coords.latitude + ',' + pos.coords.longitude + '.json';
@@ -29,7 +74,7 @@ function locationSuccess(pos) {
   else{
   
     if(provider === '0'){
-      url = 'http://api.openweathermap.org/data/2.5/weather?&q=' + city + '&appid=' + apiKey;
+      url = 'http://api.openweathermap.org/data/2.5/weather?&q=' + city + '&appid=' + apiKey + '&units=' + opScale;
     }
     else{
       url = 'http://api.wunderground.com/api/' + apiKey + '/forecast/geolookup/conditions/q/' + city + '.json';
@@ -37,38 +82,37 @@ function locationSuccess(pos) {
   
   }
   
-  // Send request to OpenWeatherMap
+  
   xhrRequest(url, 'GET',
     function(text) {
       // responseText contains a JSON object with weather info
       var json = JSON.parse(text);
       
+      //console.log("URL: " + url);
       //var city_called = json.name;
-			//console.log("City in response is " + city_called);
-      //console.log("Provider Temp: " + provider);
-      
+      //console.log("City: " + city);
+      //console.log("Provider: " + provider);
+      //console.log("Scale: " + scale);
+            
       var temperature;
-      
-
-		
       
       if(provider === '0'){
         temperature = Math.round(json.main.temp);
       }
       else{
         if(scale === "C"){
-        temperature = json.current_observation.temp_c;
+        temperature =  Math.round(json.current_observation.temp_c);
         }
         else if(scale === "F"){
-        temperature = json.current_observation.temp_f;
+        temperature =  Math.round(json.current_observation.temp_f);
         }
       }
-          
-      //console.log("Temperature is " + temperature);
+                
+      //console.log("Temperature: " + temperature);
 
       // Assemble dictionary using our keys
       var dictionary = {
-        "KEY_TEMPERATURE": temperature        
+        "Temperature": temperature        
       };
 
       // Send to Pebble
@@ -82,7 +126,6 @@ function locationSuccess(pos) {
       );}      
   );
 }
-
 
 function locationError(err) {
   //console.log("Error requesting location!");
@@ -106,6 +149,7 @@ Pebble.addEventListener('ready', function() {
   apiKey = localStorage.apiKey;
   provider = localStorage.provider;
   scale = localStorage.scale;
+  
   Pebble.sendAppMessage({'0': 0
 	}, function(e) {
       //console.log('Sent ready message!');
@@ -132,56 +176,12 @@ Pebble.addEventListener('appmessage',
     getWeather();
   });
 
-  //Show Configuration
-
-Pebble.addEventListener('showConfiguration', function() {
-  var url = 'http://winterwinter.github.io/OverwatchGT/';
-
-  Pebble.openURL(url);
-});
-
-Pebble.addEventListener('webviewclosed', function(e) {
-  // Decode the user's preferences
-  var configData = JSON.parse(decodeURIComponent(e.response));
-  
-  apiKey = configData.apiKey;
-  city = configData.city;
-  provider = configData.provider;
-  scale = configData.scale;
-  //console.log("API Key is " + apiKey);
-	//console.log("Entered city is " + city);
-  localStorage.apiKey = apiKey;
-  localStorage.city = city;
-  localStorage.provider = provider;
-  localStorage.scale = scale;
-
-                        
-  // Send to the watchapp via AppMessage
-var dict = {
-  "KEY_SCALE" : configData.scale,
-  "KEY_VIBRATE" : configData.vibrate,
-  "KEY_HERO" : configData.hero,
-  "KEY_INTERVAL" : configData.interval,
-  "KEY_FLICK" : configData.flick,
-  "KEY_PROVIDER" : configData.provider
-};
-
-  // Send to the watchapp
-Pebble.sendAppMessage(dict, function() {
-  //console.log('Config data sent successfully!');
-}, function(e) {
-  //console.log('Error sending config data!');
-
-});
-});
-
 function api(){
   
   if(apiKey === undefined || apiKey === null || apiKey === ""){
-  Pebble.showSimpleNotificationOnPebble('Weather API', 'An API key is required to fetch OpenWeatherMap data. These can be freely obtained from OpenWeatherMap.org.');
+  Pebble.showSimpleNotificationOnPebble('Weather API', 'An API key is required to fetch weather data. These can be freely obtained from OpenWeatherMap.org or WUnderground.com.');
   }
   
 }
 
 Pebble.addEventListener('ready', api);
-
