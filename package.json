@@ -8,7 +8,8 @@
     "pebble": {
         "capabilities": [
             "location",
-            "configurable"
+            "configurable",
+            "health"
         ],
         "displayName": "Overwatch GT",
         "enableMultiJS": true,
@@ -21,16 +22,107 @@
             "API",
             "Scale",
             "City",
-            "Temperature"
+            "Temperature",
+            "Comp1",
+            "Comp2",
+            "Comp3",
+            "Comp4"
         ],
         "projectType": "native",
         "resources": {
             "media": [
                 {
+                    "file": "images/Ana Touquoise.png",
+                    "name": "Ana_Turquoise",
+                    "targetPlatforms": [
+                        "basalt",
+                        "chalk"
+                    ],
+                    "type": "png"
+                },
+                {
+                    "file": "images/Ana Peridot.png",
+                    "name": "Ana_Peridot",
+                    "targetPlatforms": [
+                        "basalt",
+                        "chalk"
+                    ],
+                    "type": "png"
+                },
+                {
+                    "file": "images/Ana Merciful.png",
+                    "name": "Ana_Merciful",
+                    "targetPlatforms": [
+                        "basalt",
+                        "chalk"
+                    ],
+                    "type": "png"
+                },
+                {
+                    "file": "images/Ana Garnet.png",
+                    "name": "Ana_Garnet",
+                    "targetPlatforms": [
+                        "basalt",
+                        "chalk"
+                    ],
+                    "type": "png"
+                },
+                {
+                    "file": "images/Ana Default.png",
+                    "name": "Ana",
+                    "targetPlatforms": null,
+                    "type": "png"
+                },
+                {
                     "file": "fonts/Time.ttf",
                     "name": "TIME_40",
                     "targetPlatforms": null,
                     "type": "font"
+                },
+                {
+                    "file": "images/Bastion Dawn.png",
+                    "name": "Bastion_Dawn",
+                    "targetPlatforms": [
+                        "basalt",
+                        "chalk"
+                    ],
+                    "type": "png"
+                },
+                {
+                    "file": "images/Bastion Defense Matrix.png",
+                    "name": "Bastion_DM",
+                    "targetPlatforms": [
+                        "basalt",
+                        "chalk"
+                    ],
+                    "type": "png"
+                },
+                {
+                    "file": "images/Bastion Meadow.png",
+                    "name": "Bastion_Meadow",
+                    "targetPlatforms": [
+                        "basalt",
+                        "chalk"
+                    ],
+                    "type": "png"
+                },
+                {
+                    "file": "images/Bastion Overgrown.png",
+                    "name": "Bastion_Overgrown",
+                    "targetPlatforms": [
+                        "basalt",
+                        "chalk"
+                    ],
+                    "type": "png"
+                },
+                {
+                    "file": "images/Bastion Sky.png",
+                    "name": "Bastion_Sky",
+                    "targetPlatforms": [
+                        "basalt",
+                        "chalk"
+                    ],
+                    "type": "png"
                 },
                 {
                     "file": "images/Bastion.png",
@@ -39,33 +131,45 @@
                     "type": "png"
                 },
                 {
-                    "file": "images/Bastion Dawn.png",
-                    "name": "Bastion_Dawn",
+                    "file": "images/Day UI Round.png",
+                    "name": "Day_UI",
                     "targetPlatforms": null,
                     "type": "png"
                 },
                 {
-                    "file": "images/Bastion Defense Matrix.png",
-                    "name": "Bastion_DM",
-                    "targetPlatforms": null,
+                    "file": "images/Dva Blueberry.png",
+                    "name": "Dva_Blueberry",
+                    "targetPlatforms": [
+                        "basalt",
+                        "chalk"
+                    ],
                     "type": "png"
                 },
                 {
-                    "file": "images/Bastion Meadow.png",
-                    "name": "Bastion_Meadow",
-                    "targetPlatforms": null,
+                    "file": "images/Dva Lime.png",
+                    "name": "Dva_Lime",
+                    "targetPlatforms": [
+                        "basalt",
+                        "chalk"
+                    ],
                     "type": "png"
                 },
                 {
-                    "file": "images/Bastion Overgrown.png",
-                    "name": "Bastion_Overgrown",
-                    "targetPlatforms": null,
+                    "file": "images/Dva Tangerine.png",
+                    "name": "Dva_Tangerine",
+                    "targetPlatforms": [
+                        "basalt",
+                        "chalk"
+                    ],
                     "type": "png"
                 },
                 {
-                    "file": "images/Bastion Sky.png",
-                    "name": "Bastion_Sky",
-                    "targetPlatforms": null,
+                    "file": "images/Dva White Rabbit.png",
+                    "name": "Dva_White_Rabbit",
+                    "targetPlatforms": [
+                        "basalt",
+                        "chalk"
+                    ],
                     "type": "png"
                 },
                 {
@@ -75,27 +179,36 @@
                     "type": "png"
                 },
                 {
-                    "file": "images/Dva Blueberry.png",
-                    "name": "Dva_Blueberry",
+                    "file": "images/Evening UI Round.png",
+                    "name": "Evening_UI",
                     "targetPlatforms": null,
                     "type": "png"
                 },
                 {
-                    "file": "images/Dva Lime.png",
-                    "name": "Dva_Lime",
-                    "targetPlatforms": null,
+                    "file": "images/Genji Cinnabar.png",
+                    "name": "Genji_Cinnabar",
+                    "targetPlatforms": [
+                        "basalt",
+                        "chalk"
+                    ],
                     "type": "png"
                 },
                 {
-                    "file": "images/Dva Tangerine.png",
-                    "name": "Dva_Tangerine",
-                    "targetPlatforms": null,
+                    "file": "images/Genji Malachite.png",
+                    "name": "Genji_Malachite",
+                    "targetPlatforms": [
+                        "basalt",
+                        "chalk"
+                    ],
                     "type": "png"
                 },
                 {
-                    "file": "images/Dva White Rabbit.png",
-                    "name": "Dva_White_Rabbit",
-                    "targetPlatforms": null,
+                    "file": "images/Genji Ochre.png",
+                    "name": "Genji_Ochre",
+                    "targetPlatforms": [
+                        "basalt",
+                        "chalk"
+                    ],
                     "type": "png"
                 },
                 {
@@ -105,33 +218,12 @@
                     "type": "png"
                 },
                 {
-                    "file": "images/Genji Cinnabar.png",
-                    "name": "Genji_Cinnabar",
-                    "targetPlatforms": null,
-                    "type": "png"
-                },
-                {
-                    "file": "images/Genji Malachite.png",
-                    "name": "Genji_Malachite",
-                    "targetPlatforms": null,
-                    "type": "png"
-                },
-                {
-                    "file": "images/Genji Ochre.png",
-                    "name": "Genji_Ochre",
-                    "targetPlatforms": null,
-                    "type": "png"
-                },
-                {
-                    "file": "images/Hanzo.png",
-                    "name": "Hanzo",
-                    "targetPlatforms": null,
-                    "type": "png"
-                },
-                {
                     "file": "images/Hanzo Azuki.png",
                     "name": "Hanzo_Azuki",
-                    "targetPlatforms": null,
+                    "targetPlatforms": [
+                        "basalt",
+                        "chalk"
+                    ],
                     "type": "png"
                 },
                 {
@@ -143,19 +235,70 @@
                 {
                     "file": "images/Hanzo Dragon.png",
                     "name": "Hanzo_Dragon",
-                    "targetPlatforms": null,
+                    "targetPlatforms": [
+                        "basalt",
+                        "chalk"
+                    ],
                     "type": "png"
                 },
                 {
                     "file": "images/Hanzo Midori.png",
                     "name": "Hanzo_Midori",
-                    "targetPlatforms": null,
+                    "targetPlatforms": [
+                        "basalt",
+                        "chalk"
+                    ],
                     "type": "png"
                 },
                 {
                     "file": "images/Hanzo Sora.png",
                     "name": "Hanzo_Sora",
+                    "targetPlatforms": [
+                        "basalt",
+                        "chalk"
+                    ],
+                    "type": "png"
+                },
+                {
+                    "file": "images/Hanzo.png",
+                    "name": "Hanzo",
                     "targetPlatforms": null,
+                    "type": "png"
+                },
+                {
+                    "file": "images/Junkrat Bleached.png",
+                    "name": "Junkrat_Bleached",
+                    "targetPlatforms": [
+                        "basalt",
+                        "chalk"
+                    ],
+                    "type": "png"
+                },
+                {
+                    "file": "images/Junkrat Drowned.png",
+                    "name": "Junkrat_Drowned",
+                    "targetPlatforms": [
+                        "basalt",
+                        "chalk"
+                    ],
+                    "type": "png"
+                },
+                {
+                    "file": "images/Junkrat Radiated.png",
+                    "name": "Junkrat_Radiated",
+                    "targetPlatforms": [
+                        "basalt",
+                        "chalk"
+                    ],
+                    "type": "png"
+                },
+                {
+                    "file": "images/Junkrat Rusted.png",
+                    "name": "Junkrat_Rusted",
+                    "targetPlatforms": [
+                        "basalt",
+                        "chalk"
+                    ],
                     "type": "png"
                 },
                 {
@@ -165,27 +308,48 @@
                     "type": "png"
                 },
                 {
-                    "file": "images/Junkrat Bleached.png",
-                    "name": "Junkrat_Bleached",
-                    "targetPlatforms": null,
+                    "file": "images/Lucio Auditiva.png",
+                    "name": "Lucio_Auditiva",
+                    "targetPlatforms": [
+                        "basalt",
+                        "chalk"
+                    ],
                     "type": "png"
                 },
                 {
-                    "file": "images/Junkrat Drowned.png",
-                    "name": "Junkrat_Drowned",
-                    "targetPlatforms": null,
+                    "file": "images/Lucio Azul.png",
+                    "name": "Lucio_Azul",
+                    "targetPlatforms": [
+                        "basalt",
+                        "chalk"
+                    ],
                     "type": "png"
                 },
                 {
-                    "file": "images/Junkrat Radiated.png",
-                    "name": "Junkrat_Radiated",
-                    "targetPlatforms": null,
+                    "file": "images/Lucio Laranja.png",
+                    "name": "Lucio_Laranja",
+                    "targetPlatforms": [
+                        "basalt",
+                        "chalk"
+                    ],
                     "type": "png"
                 },
                 {
-                    "file": "images/Junkrat Rusted.png",
-                    "name": "Junkrat_Rusted",
-                    "targetPlatforms": null,
+                    "file": "images/Lucio Roxo.png",
+                    "name": "Lucio_Roxo",
+                    "targetPlatforms": [
+                        "basalt",
+                        "chalk"
+                    ],
+                    "type": "png"
+                },
+                {
+                    "file": "images/Lucio Vermelho.png",
+                    "name": "Lucio_Vermelho",
+                    "targetPlatforms": [
+                        "basalt",
+                        "chalk"
+                    ],
                     "type": "png"
                 },
                 {
@@ -195,33 +359,81 @@
                     "type": "png"
                 },
                 {
-                    "file": "images/Lucio Auditiva.png",
-                    "name": "Lucio_Auditiva",
+                    "file": "images/McCree Lake.png",
+                    "name": "McCree_Lake",
+                    "targetPlatforms": [
+                        "basalt",
+                        "chalk"
+                    ],
+                    "type": "png"
+                },
+                {
+                    "file": "images/McCree Sage.png",
+                    "name": "McCree_Sage",
+                    "targetPlatforms": [
+                        "basalt",
+                        "chalk"
+                    ],
+                    "type": "png"
+                },
+                {
+                    "file": "images/McCree Wheat.png",
+                    "name": "McCree_Wheat",
+                    "targetPlatforms": [
+                        "basalt",
+                        "chalk"
+                    ],
+                    "type": "png"
+                },
+                {
+                    "file": "images/McCree White Hat.png",
+                    "name": "McCree_WH",
+                    "targetPlatforms": [
+                        "basalt",
+                        "chalk"
+                    ],
+                    "type": "png"
+                },
+                {
+                    "file": "images/McCree.png",
+                    "name": "McCree",
                     "targetPlatforms": null,
                     "type": "png"
                 },
                 {
-                    "file": "images/Lucio Azul.png",
-                    "name": "Lucio_Azul",
-                    "targetPlatforms": null,
+                    "file": "images/Mei Chrysanthemum.png",
+                    "name": "Mei_Chrysanthemum",
+                    "targetPlatforms": [
+                        "basalt",
+                        "chalk"
+                    ],
                     "type": "png"
                 },
                 {
-                    "file": "images/Lucio Laranja.png",
-                    "name": "Lucio_Laranja",
-                    "targetPlatforms": null,
+                    "file": "images/Mei Healiotrope.png",
+                    "name": "Mei_Healiotrope",
+                    "targetPlatforms": [
+                        "basalt",
+                        "chalk"
+                    ],
                     "type": "png"
                 },
                 {
-                    "file": "images/Lucio Roxo.png",
-                    "name": "Lucio_Roxo",
-                    "targetPlatforms": null,
+                    "file": "images/Mei Jade.png",
+                    "name": "Mei_Jade",
+                    "targetPlatforms": [
+                        "basalt",
+                        "chalk"
+                    ],
                     "type": "png"
                 },
                 {
-                    "file": "images/Lucio Vermelho.png",
-                    "name": "Lucio_Vermelho",
-                    "targetPlatforms": null,
+                    "file": "images/Mei Persimmon.png",
+                    "name": "Mei_Persimmon",
+                    "targetPlatforms": [
+                        "basalt",
+                        "chalk"
+                    ],
                     "type": "png"
                 },
                 {
@@ -231,27 +443,55 @@
                     "type": "png"
                 },
                 {
-                    "file": "images/Mei Chrysanthemum.png",
-                    "name": "Mei_Chrysanthemum",
+                    "file": "images/Menu.png",
+                    "menuIcon": true,
+                    "name": "Menu",
                     "targetPlatforms": null,
                     "type": "png"
                 },
                 {
-                    "file": "images/Mei Healiotrope.png",
-                    "name": "Mei_Healiotrope",
-                    "targetPlatforms": null,
+                    "file": "images/Mercy Amber.png",
+                    "name": "Mercy_Amber",
+                    "targetPlatforms": [
+                        "basalt",
+                        "chalk"
+                    ],
                     "type": "png"
                 },
                 {
-                    "file": "images/Mei Jade.png",
-                    "name": "Mei_Jade",
-                    "targetPlatforms": null,
+                    "file": "images/Mercy Celestial.png",
+                    "name": "Mercy_Celestial",
+                    "targetPlatforms": [
+                        "basalt",
+                        "chalk"
+                    ],
                     "type": "png"
                 },
                 {
-                    "file": "images/Mei Persimmon.png",
-                    "name": "Mei_Persimmon",
-                    "targetPlatforms": null,
+                    "file": "images/Mercy Cobalt.png",
+                    "name": "Mercy_Cobalt",
+                    "targetPlatforms": [
+                        "basalt",
+                        "chalk"
+                    ],
+                    "type": "png"
+                },
+                {
+                    "file": "images/Mercy Orchid.png",
+                    "name": "Mercy_Orchid",
+                    "targetPlatforms": [
+                        "basalt",
+                        "chalk"
+                    ],
+                    "type": "png"
+                },
+                {
+                    "file": "images/Mercy Verdant.png",
+                    "name": "Mercy_Verdant",
+                    "targetPlatforms": [
+                        "basalt",
+                        "chalk"
+                    ],
                     "type": "png"
                 },
                 {
@@ -261,33 +501,51 @@
                     "type": "png"
                 },
                 {
-                    "file": "images/Mercy Amber.png",
-                    "name": "Mercy_Amber",
+                    "file": "images/Morning UI Round.png",
+                    "name": "Morning_UI",
                     "targetPlatforms": null,
                     "type": "png"
                 },
                 {
-                    "file": "images/Mercy Celestial.png",
-                    "name": "Mercy_Celestial",
+                    "file": "images/NightUI Round.png",
+                    "name": "Night_UI",
                     "targetPlatforms": null,
                     "type": "png"
                 },
                 {
-                    "file": "images/Mercy Cobalt.png",
-                    "name": "Mercy_Cobalt",
-                    "targetPlatforms": null,
+                    "file": "images/Pharah Amethyst.png",
+                    "name": "Pharah_Amethyst",
+                    "targetPlatforms": [
+                        "basalt",
+                        "chalk"
+                    ],
                     "type": "png"
                 },
                 {
-                    "file": "images/Mercy Orchid.png",
-                    "name": "Mercy_Orchid",
-                    "targetPlatforms": null,
+                    "file": "images/Pharah Emerald.png",
+                    "name": "Pharah_Emerald",
+                    "targetPlatforms": [
+                        "basalt",
+                        "chalk"
+                    ],
                     "type": "png"
                 },
                 {
-                    "file": "images/Mercy Verdant.png",
-                    "name": "Mercy_Verdant",
-                    "targetPlatforms": null,
+                    "file": "images/Pharah Jackal.png",
+                    "name": "Pharah_Jackal",
+                    "targetPlatforms": [
+                        "basalt",
+                        "chalk"
+                    ],
+                    "type": "png"
+                },
+                {
+                    "file": "images/Pharah Titanium.png",
+                    "name": "Pharah_Titanium",
+                    "targetPlatforms": [
+                        "basalt",
+                        "chalk"
+                    ],
                     "type": "png"
                 },
                 {
@@ -297,27 +555,48 @@
                     "type": "png"
                 },
                 {
-                    "file": "images/Pharah Amethyst.png",
-                    "name": "Pharah_Amethyst",
-                    "targetPlatforms": null,
+                    "file": "images/Reaper Blood.png",
+                    "name": "Reaper_Blood",
+                    "targetPlatforms": [
+                        "basalt",
+                        "chalk"
+                    ],
                     "type": "png"
                 },
                 {
-                    "file": "images/Pharah Emerald.png",
-                    "name": "Pharah_Emerald",
-                    "targetPlatforms": null,
+                    "file": "images/Reaper Midnight.png",
+                    "name": "Reaper_Midnight",
+                    "targetPlatforms": [
+                        "basalt",
+                        "chalk"
+                    ],
                     "type": "png"
                 },
                 {
-                    "file": "images/Pharah Jackal.png",
-                    "name": "Pharah_Jackal",
-                    "targetPlatforms": null,
+                    "file": "images/Reaper Moss.png",
+                    "name": "Reaper_Moss",
+                    "targetPlatforms": [
+                        "basalt",
+                        "chalk"
+                    ],
                     "type": "png"
                 },
                 {
-                    "file": "images/Pharah Titanium.png",
-                    "name": "Pharah_Titanium",
-                    "targetPlatforms": null,
+                    "file": "images/Reaper Royal.png",
+                    "name": "Reaper_Royal",
+                    "targetPlatforms": [
+                        "basalt",
+                        "chalk"
+                    ],
+                    "type": "png"
+                },
+                {
+                    "file": "images/Reaper Wight.png",
+                    "name": "Reaper_Wight",
+                    "targetPlatforms": [
+                        "basalt",
+                        "chalk"
+                    ],
                     "type": "png"
                 },
                 {
@@ -327,33 +606,63 @@
                     "type": "png"
                 },
                 {
-                    "file": "images/Reaper Blood.png",
-                    "name": "Reaper_Blood",
+                    "file": "images/Reinhardt Blackhardt.png",
+                    "name": "Reinhardt_Blackhardt",
+                    "targetPlatforms": [
+                        "basalt",
+                        "chalk"
+                    ],
+                    "type": "png"
+                },
+                {
+                    "file": "images/Reinhardt Cobalt.png",
+                    "name": "Reinhardt_Cobalt",
+                    "targetPlatforms": [
+                        "basalt",
+                        "chalk"
+                    ],
+                    "type": "png"
+                },
+                {
+                    "file": "images/Reinhardt Veridian.png",
+                    "name": "Reinhardt_Veridian",
+                    "targetPlatforms": [
+                        "basalt",
+                        "chalk"
+                    ],
+                    "type": "png"
+                },
+                {
+                    "file": "images/Reinhardt.png",
+                    "name": "Reinhardt",
                     "targetPlatforms": null,
                     "type": "png"
                 },
                 {
-                    "file": "images/Reaper Midnight.png",
-                    "name": "Reaper_Midnight",
-                    "targetPlatforms": null,
+                    "file": "images/Roadhog Kiwi.png",
+                    "name": "Roadhog_Kiwi",
+                    "targetPlatforms": [
+                        "basalt",
+                        "chalk"
+                    ],
                     "type": "png"
                 },
                 {
-                    "file": "images/Reaper Moss.png",
-                    "name": "Reaper_Moss",
-                    "targetPlatforms": null,
+                    "file": "images/Roadhog Stitched.png",
+                    "name": "Roadhog_Stitched",
+                    "targetPlatforms": [
+                        "basalt",
+                        "chalk"
+                    ],
                     "type": "png"
                 },
                 {
-                    "file": "images/Reaper Royal.png",
-                    "name": "Reaper_Royal",
-                    "targetPlatforms": null,
-                    "type": "png"
-                },
-                {
-                    "file": "images/Reaper Wight.png",
-                    "name": "Reaper_Wight",
-                    "targetPlatforms": null,
+                    "file": "images/Roadhog Thistle.png",
+                    "name": "Roadhog_Thistle",
+                    "targetPlatforms": [
+                        "basalt",
+                        "chalk"
+                    ],
                     "type": "png"
                 },
                 {
@@ -363,21 +672,30 @@
                     "type": "png"
                 },
                 {
-                    "file": "images/Roadhog Kiwi.png",
-                    "name": "Roadhog_Kiwi",
-                    "targetPlatforms": null,
+                    "file": "images/Soldier 76 Jet.png",
+                    "name": "Soldier76_Jet",
+                    "targetPlatforms": [
+                        "basalt",
+                        "chalk"
+                    ],
                     "type": "png"
                 },
                 {
-                    "file": "images/Roadhog Stitched.png",
-                    "name": "Roadhog_Stitched",
-                    "targetPlatforms": null,
+                    "file": "images/Soldier 76 Olive.png",
+                    "name": "Soldier76_Olive",
+                    "targetPlatforms": [
+                        "basalt",
+                        "chalk"
+                    ],
                     "type": "png"
                 },
                 {
-                    "file": "images/Roadhog Thistle.png",
-                    "name": "Roadhog_Thistle",
-                    "targetPlatforms": null,
+                    "file": "images/Soldier 76 Smoke.png",
+                    "name": "Soldier76_Smoke",
+                    "targetPlatforms": [
+                        "basalt",
+                        "chalk"
+                    ],
                     "type": "png"
                 },
                 {
@@ -387,21 +705,48 @@
                     "type": "png"
                 },
                 {
-                    "file": "images/Soldier 76 Jet.png",
-                    "name": "Soldier76_Jet",
-                    "targetPlatforms": null,
+                    "file": "images/Symmetra Cardamom.png",
+                    "name": "Symmetra_Cardamom",
+                    "targetPlatforms": [
+                        "basalt",
+                        "chalk"
+                    ],
                     "type": "png"
                 },
                 {
-                    "file": "images/Soldier 76 Olive.png",
-                    "name": "Soldier76_Olive",
-                    "targetPlatforms": null,
+                    "file": "images/Symmetra Hyacinth.png",
+                    "name": "Symmetra_Hyacinth",
+                    "targetPlatforms": [
+                        "basalt",
+                        "chalk"
+                    ],
                     "type": "png"
                 },
                 {
-                    "file": "images/Soldier 76 Smoke.png",
-                    "name": "Soldier76_Smoke",
-                    "targetPlatforms": null,
+                    "file": "images/Symmetra Saffron.png",
+                    "name": "Symmetra_Saffron",
+                    "targetPlatforms": [
+                        "basalt",
+                        "chalk"
+                    ],
+                    "type": "png"
+                },
+                {
+                    "file": "images/Symmetra Technomancer.png",
+                    "name": "Symmetra_Technomancer",
+                    "targetPlatforms": [
+                        "basalt",
+                        "chalk"
+                    ],
+                    "type": "png"
+                },
+                {
+                    "file": "images/Symmetra Utopaea.png",
+                    "name": "Symmetra_Utopaea",
+                    "targetPlatforms": [
+                        "basalt",
+                        "chalk"
+                    ],
                     "type": "png"
                 },
                 {
@@ -411,33 +756,90 @@
                     "type": "png"
                 },
                 {
-                    "file": "images/Symmetra Cardamom.png",
-                    "name": "Symmetra_Cardamom",
+                    "file": "images/Torbjorn Bla.png",
+                    "name": "Torbjorn_Bla",
+                    "targetPlatforms": [
+                        "basalt",
+                        "chalk"
+                    ],
+                    "type": "png"
+                },
+                {
+                    "file": "images/Torbjorn Citron.png",
+                    "name": "Torbjorn_Citron",
+                    "targetPlatforms": [
+                        "basalt",
+                        "chalk"
+                    ],
+                    "type": "png"
+                },
+                {
+                    "file": "images/Torbjorn Gron.png",
+                    "name": "Torbjorn_Gron",
+                    "targetPlatforms": [
+                        "basalt",
+                        "chalk"
+                    ],
+                    "type": "png"
+                },
+                {
+                    "file": "images/Torbjorn Plommon.png",
+                    "name": "Torbjorn_Plommon",
+                    "targetPlatforms": [
+                        "basalt",
+                        "chalk"
+                    ],
+                    "type": "png"
+                },
+                {
+                    "file": "images/Torbjorn.png",
+                    "name": "Torbjorn",
                     "targetPlatforms": null,
                     "type": "png"
                 },
                 {
-                    "file": "images/Symmetra Hyacinth.png",
-                    "name": "Symmetra_Hyacinth",
-                    "targetPlatforms": null,
+                    "file": "images/Tracer Electric Purple.png",
+                    "name": "Tracer_EP",
+                    "targetPlatforms": [
+                        "basalt",
+                        "chalk"
+                    ],
                     "type": "png"
                 },
                 {
-                    "file": "images/Symmetra Saffron.png",
-                    "name": "Symmetra_Saffron",
-                    "targetPlatforms": null,
+                    "file": "images/Tracer Hot Pink.png",
+                    "name": "Tracer_HP",
+                    "targetPlatforms": [
+                        "basalt",
+                        "chalk"
+                    ],
                     "type": "png"
                 },
                 {
-                    "file": "images/Symmetra Technomancer.png",
-                    "name": "Symmetra_Technomancer",
-                    "targetPlatforms": null,
+                    "file": "images/Tracer Neon Green.png",
+                    "name": "Tracer_NG",
+                    "targetPlatforms": [
+                        "basalt",
+                        "chalk"
+                    ],
                     "type": "png"
                 },
                 {
-                    "file": "images/Symmetra Utopaea.png",
-                    "name": "Symmetra_Utopaea",
-                    "targetPlatforms": null,
+                    "file": "images/Tracer Posh.png",
+                    "name": "Tracer_Posh",
+                    "targetPlatforms": [
+                        "basalt",
+                        "chalk"
+                    ],
+                    "type": "png"
+                },
+                {
+                    "file": "images/Tracer Royal Blue.png",
+                    "name": "Tracer_RB",
+                    "targetPlatforms": [
+                        "basalt",
+                        "chalk"
+                    ],
                     "type": "png"
                 },
                 {
@@ -447,51 +849,21 @@
                     "type": "png"
                 },
                 {
-                    "file": "images/Tracer Electric Purple.png",
-                    "name": "Tracer_EP",
-                    "targetPlatforms": null,
-                    "type": "png"
-                },
-                {
-                    "file": "images/Tracer Hot Pink.png",
-                    "name": "Tracer_HP",
-                    "targetPlatforms": null,
-                    "type": "png"
-                },
-                {
-                    "file": "images/Tracer Neon Green.png",
-                    "name": "Tracer_NG",
-                    "targetPlatforms": null,
-                    "type": "png"
-                },
-                {
-                    "file": "images/Tracer Posh.png",
-                    "name": "Tracer_Posh",
-                    "targetPlatforms": null,
-                    "type": "png"
-                },
-                {
-                    "file": "images/Tracer Royal Blue.png",
-                    "name": "Tracer_RB",
-                    "targetPlatforms": null,
-                    "type": "png"
-                },
-                {
-                    "file": "images/Widowmaker.png",
-                    "name": "Widowmaker",
-                    "targetPlatforms": null,
-                    "type": "png"
-                },
-                {
                     "file": "images/Widowmaker Ciel.png",
                     "name": "Widowmaker_Ciel",
-                    "targetPlatforms": null,
+                    "targetPlatforms": [
+                        "basalt",
+                        "chalk"
+                    ],
                     "type": "png"
                 },
                 {
                     "file": "images/Widowmaker Rose.png",
                     "name": "Widowmaker_Rose",
-                    "targetPlatforms": null,
+                    "targetPlatforms": [
+                        "basalt",
+                        "chalk"
+                    ],
                     "type": "png"
                 },
                 {
@@ -507,33 +879,96 @@
                     "type": "png"
                 },
                 {
-                    "file": "images/Winston.png",
-                    "name": "Winston",
+                    "file": "images/Widowmaker.png",
+                    "name": "Widowmaker",
                     "targetPlatforms": null,
                     "type": "png"
                 },
                 {
                     "file": "images/Winston Atmosphere.png",
                     "name": "Winston_Atmosphere",
-                    "targetPlatforms": null,
+                    "targetPlatforms": [
+                        "basalt",
+                        "chalk"
+                    ],
                     "type": "png"
                 },
                 {
                     "file": "images/Winston Banana.png",
                     "name": "Winston_Banana",
-                    "targetPlatforms": null,
+                    "targetPlatforms": [
+                        "basalt",
+                        "chalk"
+                    ],
                     "type": "png"
                 },
                 {
                     "file": "images/Winston Forest.png",
                     "name": "Winston_Forest",
-                    "targetPlatforms": null,
+                    "targetPlatforms": [
+                        "basalt",
+                        "chalk"
+                    ],
                     "type": "png"
                 },
                 {
                     "file": "images/Winston Red Planet.png",
                     "name": "Winston_RP",
+                    "targetPlatforms": [
+                        "basalt",
+                        "chalk"
+                    ],
+                    "type": "png"
+                },
+                {
+                    "file": "images/Winston.png",
+                    "name": "Winston",
                     "targetPlatforms": null,
+                    "type": "png"
+                },
+                {
+                    "file": "images/Zarya Brick.png",
+                    "name": "Zarya_Brick",
+                    "targetPlatforms": [
+                        "basalt",
+                        "chalk"
+                    ],
+                    "type": "png"
+                },
+                {
+                    "file": "images/Zarya Dawn.png",
+                    "name": "Zarya_Dawn",
+                    "targetPlatforms": [
+                        "basalt",
+                        "chalk"
+                    ],
+                    "type": "png"
+                },
+                {
+                    "file": "images/Zarya Goldenrod.png",
+                    "name": "Zarya_Goldenrod",
+                    "targetPlatforms": [
+                        "basalt",
+                        "chalk"
+                    ],
+                    "type": "png"
+                },
+                {
+                    "file": "images/Zarya Taiga.png",
+                    "name": "Zarya_Taiga",
+                    "targetPlatforms": [
+                        "basalt",
+                        "chalk"
+                    ],
+                    "type": "png"
+                },
+                {
+                    "file": "images/Zarya Violet.png",
+                    "name": "Zarya_Violet",
+                    "targetPlatforms": [
+                        "basalt",
+                        "chalk"
+                    ],
                     "type": "png"
                 },
                 {
@@ -543,177 +978,44 @@
                     "type": "png"
                 },
                 {
-                    "file": "images/Zarya Brick.png",
-                    "name": "Zarya_Brick",
-                    "targetPlatforms": null,
-                    "type": "png"
-                },
-                {
-                    "file": "images/Zarya Dawn.png",
-                    "name": "Zarya_Dawn",
-                    "targetPlatforms": null,
-                    "type": "png"
-                },
-                {
-                    "file": "images/Zarya Goldenrod.png",
-                    "name": "Zarya_Goldenrod",
-                    "targetPlatforms": null,
-                    "type": "png"
-                },
-                {
-                    "file": "images/Zarya Taiga.png",
-                    "name": "Zarya_Taiga",
-                    "targetPlatforms": null,
-                    "type": "png"
-                },
-                {
-                    "file": "images/Zarya Violet.png",
-                    "name": "Zarya_Violet",
-                    "targetPlatforms": null,
-                    "type": "png"
-                },
-                {
-                    "file": "images/Zenyatta.png",
-                    "name": "Zenyatta",
-                    "targetPlatforms": null,
-                    "type": "png"
-                },
-                {
                     "file": "images/Zenyatta Air.png",
                     "name": "Zenyatta_Air",
-                    "targetPlatforms": null,
+                    "targetPlatforms": [
+                        "basalt",
+                        "chalk"
+                    ],
                     "type": "png"
                 },
                 {
                     "file": "images/Zenyatta Ascendant.png",
                     "name": "Zenyatta_Ascendant",
-                    "targetPlatforms": null,
+                    "targetPlatforms": [
+                        "basalt",
+                        "chalk"
+                    ],
                     "type": "png"
                 },
                 {
                     "file": "images/Zenyatta Leaf.png",
                     "name": "Zenyatta_Leaf",
-                    "targetPlatforms": null,
+                    "targetPlatforms": [
+                        "basalt",
+                        "chalk"
+                    ],
                     "type": "png"
                 },
                 {
                     "file": "images/Zenyatta Water.png",
                     "name": "Zenyatta_Water",
-                    "targetPlatforms": null,
+                    "targetPlatforms": [
+                        "basalt",
+                        "chalk"
+                    ],
                     "type": "png"
                 },
                 {
-                    "file": "images/Torbjorn.png",
-                    "name": "Torbjorn",
-                    "targetPlatforms": null,
-                    "type": "png"
-                },
-                {
-                    "file": "images/Torbjorn Bla.png",
-                    "name": "Torbjorn_Bla",
-                    "targetPlatforms": null,
-                    "type": "png"
-                },
-                {
-                    "file": "images/Torbjorn Citron.png",
-                    "name": "Torbjorn_Citron",
-                    "targetPlatforms": null,
-                    "type": "png"
-                },
-                {
-                    "file": "images/Torbjorn Gron.png",
-                    "name": "Torbjorn_Gron",
-                    "targetPlatforms": null,
-                    "type": "png"
-                },
-                {
-                    "file": "images/Torbjorn Plommon.png",
-                    "name": "Torbjorn_Plommon",
-                    "targetPlatforms": null,
-                    "type": "png"
-                },
-                {
-                    "file": "images/Reinhardt.png",
-                    "name": "Reinhardt",
-                    "targetPlatforms": null,
-                    "type": "png"
-                },
-                {
-                    "file": "images/Reinhardt Blackhardt.png",
-                    "name": "Reinhardt_Blackhardt",
-                    "targetPlatforms": null,
-                    "type": "png"
-                },
-                {
-                    "file": "images/Reinhardt Cobalt.png",
-                    "name": "Reinhardt_Cobalt",
-                    "targetPlatforms": null,
-                    "type": "png"
-                },
-                {
-                    "file": "images/Reinhardt Veridian.png",
-                    "name": "Reinhardt_Veridian",
-                    "targetPlatforms": null,
-                    "type": "png"
-                },
-                {
-                    "file": "images/McCree.png",
-                    "name": "McCree",
-                    "targetPlatforms": null,
-                    "type": "png"
-                },
-                {
-                    "file": "images/McCree Lake.png",
-                    "name": "McCree_Lake",
-                    "targetPlatforms": null,
-                    "type": "png"
-                },
-                {
-                    "file": "images/McCree Sage.png",
-                    "name": "McCree_Sage",
-                    "targetPlatforms": null,
-                    "type": "png"
-                },
-                {
-                    "file": "images/McCree Wheat.png",
-                    "name": "McCree_Wheat",
-                    "targetPlatforms": null,
-                    "type": "png"
-                },
-                {
-                    "file": "images/McCree White Hat.png",
-                    "name": "McCree_WH",
-                    "targetPlatforms": null,
-                    "type": "png"
-                },
-                {
-                    "file": "images/Menu.png",
-                    "menuIcon": true,
-                    "name": "Menu",
-                    "targetPlatforms": null,
-                    "type": "png"
-                },
-                {
-                    "file": "images/Day UI Round.png",
-                    "name": "Day_UI",
-                    "targetPlatforms": null,
-                    "type": "png"
-                },
-                {
-                    "file": "images/Evening UI Round.png",
-                    "name": "Evening_UI",
-                    "targetPlatforms": null,
-                    "type": "png"
-                },
-                {
-                    "file": "images/Morning UI Round.png",
-                    "name": "Morning_UI",
-                    "targetPlatforms": null,
-                    "type": "png"
-                },
-                {
-                    "file": "images/NightUI Round.png",
-                    "name": "Night_UI",
+                    "file": "images/Zenyatta.png",
+                    "name": "Zenyatta",
                     "targetPlatforms": null,
                     "type": "png"
                 }
@@ -725,10 +1027,10 @@
             "basalt",
             "chalk"
         ],
-        "uuid": "e2768b20-4d03-45d0-82e8-90e7dd8560a5",
+        "uuid": "92368a72-5aea-4283-a61b-d8599b0a156a",
         "watchapp": {
             "watchface": true
         }
     },
-    "version": "1.5.0"
+    "version": "1.9.0"
 }

@@ -1,7 +1,9 @@
 var city = "";
-var apiKey = null; //b0ee87cfeac784b1 wunderground : 4f4f0b5ecd03fb8e857be86378159a38 openweather
+var apiKey = null;
 var provider = null;
 var scale = null;
+
+//Clay//
 
 var Clay = require('pebble-clay');
 var clayConfig = require('./config');
@@ -41,6 +43,9 @@ Pebble.addEventListener('webviewclosed', function(e) {
   });
 });
 
+//End Clay//
+
+//Weather//
 var xhrRequest = function (url, type, callback) {
   var xhr = new XMLHttpRequest();
   xhr.onload = function () {
@@ -139,7 +144,7 @@ function getWeather() {
     {timeout: 15000, maximumAge: 60000}
   );
   }else{
-    locationSuccess();
+    locationSuccess(); //maybe?
   }
 }
 
@@ -165,7 +170,7 @@ Pebble.addEventListener('ready',
   function(e) {
     //console.log("PebbleKit JS ready!");
 
-  // Get the initial weather
+  //Get the initial weather
     getWeather();
   });
 
@@ -175,13 +180,3 @@ Pebble.addEventListener('appmessage',
     //console.log("AppMessage received!");
     getWeather();
   });
-
-function api(){
-  
-  if(apiKey === undefined || apiKey === null || apiKey === ""){
-  Pebble.showSimpleNotificationOnPebble('Weather API', 'An API key is required to fetch weather data. These can be freely obtained from OpenWeatherMap.org or WUnderground.com.');
-  }
-  
-}
-
-Pebble.addEventListener('ready', api);

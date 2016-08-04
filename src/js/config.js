@@ -12,404 +12,499 @@ module.exports = [{
         "type": "select",
         "capabilities": ["NOT_PLATFORM_APLITE"],
         "messageKey": "Hero",
-        "defaultValue": "108",
+        "defaultValue": "1000",
         "label": "Hero",
         "options": [{
           "label": "Random",
-          "value": "108"
+          "value": "1000"
         }, {
+          "label": "Ana",
+          "value": [{
+            "label": "Default",
+            "value": "109"
+          }, {
+            "label": "Garnet",
+            "value": "110"
+          },{
+            "label": "Merciful",
+            "value": "111"
+          },{
+            "label": "Peridot",
+            "value": "112"
+          },{
+            "label": "Turquoise",
+            "value": "113"
+          }]
+          },{
           "label": "Bastion",
           "value": [{
             "label": "Default",
             "value": "0"
           }, {
             "label": "Dawn",
-            "value": "1"
+            "value": "21"
           }, {
             "label": "Defense Matrix",
-            "value": "2"
+            "value": "22"
           }, {
             "label": "Meadow",
-            "value": "3"
+            "value": "23"
           }, {
             "label": "Overgrown",
-            "value": "4"
+            "value": "24"
           }, {
             "label": "Sky",
-            "value": "5"
+            "value": "25"
           }]
         }, {
           "label": "D.va",
           "value": [{
             "label": "Default",
-            "value": "6"
+            "value": "1"
           }, {
             "label": "Blueberry",
-            "value": "7"
+            "value": "26"
           }, {
             "label": "Lime",
-            "value": "8"
+            "value": "27"
           }, {
             "label": "Tangerine",
-            "value": "9"
+            "value": "28"
           }, {
             "label": "White Rabbit",
-            "value": "10"
+            "value": "29"
           }]
         }, {
           "label": "Genji",
           "value": [{
             "label": "Default",
-            "value": "11"
+            "value": "2"
           }, {
             "label": "Cinnabar",
-            "value": "12"
+            "value": "30"
           }, {
             "label": "Malachite",
-            "value": "13"
+            "value": "31"
           }, {
             "label": "Ochre",
-            "value": "14"
+            "value": "32"
           }]
         }, {
           "label": "Hanzo",
           "value": [{
             "label": "Default",
-            "value": "15"
+            "value": "3"
           }, {
             "label": "Azurite",
-            "value": "16"
+            "value": "33"
           }, {
             "label": "Cloud",
-            "value": "17"
+            "value": "34"
           }, {
             "label": "Dragon",
-            "value": "18"
+            "value": "35"
           }, {
             "label": "Midori",
-            "value": " 19"
+            "value": "36"
           }, {
             "label": "Sora",
-            "value": "20"
+            "value": "37"
           }]
         }, {
           "label": "Junkrat",
           "value": [{
             "label": "Default",
-            "value": "21"
+            "value": "4"
           }, {
             "label": "Bleached",
-            "value": "22"
+            "value": "38"
           }, {
             "label": "Drowned",
-            "value": "23"
+            "value": "39"
           }, {
             "label": "Radiated",
-            "value": "24"
+            "value": "40"
           }, {
             "label": "Rusted",
-            "value": "25"
+            "value": "41"
           }]
         }, {
           "label": "Lucio",
           "value": [{
             "label": "Default",
-            "value": "26"
+            "value": "5"
           }, {
             "label": "Auditiva",
-            "value": "27"
+            "value": "42"
           }, {
             "label": "Azul",
-            "value": "28"
+            "value": "43"
           }, {
             "label": "Laranja",
-            "value": "29"
+            "value": "44"
           }, {
             "label": "Roxo",
-            "value": "30"
+            "value": "45"
           }, {
             "label": "Vermelho",
-            "value": "31"
+            "value": "46"
           }]
         }, {
           "label": "McCree",
           "value": [{
             "label": "Default",
-            "value": "32"
+            "value": "6"
           }, {
             "label": "Lake",
-            "value": "33"
+            "value": "47"
           }, {
             "label": "Sage",
-            "value": "34"
+            "value": "48"
           }, {
             "label": "Wheat",
-            "value": "35"
+            "value": "49"
           }, {
             "label": "White Hat",
-            "value": "36"
+            "value": "50"
           }]
         }, {
           "label": "Mei",
           "value": [{
             "label": "Default",
-            "value": "37"
+            "value": "7"
           }, {
             "label": "Chrysanthemum",
-            "value": "38"
+            "value": "51"
           }, {
             "label": "Healiotrope",
-            "value": "39"
-          }, {
-            "label": "Persimmon",
-            "value": "40"
+            "value": "52"
           }, {
             "label": "Jade",
-            "value": "41"
+            "value": "53"
+          }, {
+            "label": "Persimmon",
+            "value": "54"
           }]
         }, {
           "label": "Mercy",
           "value": [{
             "label": "Default",
-            "value": "42"
+            "value": "8"
           }, {
             "label": "Amber",
-            "value": "43"
+            "value": "55"
           }, {
             "label": "Celestial",
-            "value": "44"
+            "value": "56"
           }, {
             "label": "Cobalt",
-            "value": "45"
+            "value": "57"
           }, {
             "label": "Orchid",
-            "value": "46"
+            "value": "58"
           }, {
             "label": "Verdant",
-            "value": "47"
+            "value": "59"
           }]
         }, {
           "label": "Pharah",
           "value": [{
             "label": "Default",
-            "value": "48"
+            "value": "9"
           },{
             "label": "Amethyst",
-            "value": "49"
+            "value": "60"
           },{
             "label": "Emerald",
-            "value": "50"
+            "value": "61"
           },{
             "label": "Jackal",
-            "value": "51"
+            "value": "62"
           },{
             "label": "Titanium",
-            "value": "52"
+            "value": "63"
           }]
         }, {
           "label": "Reaper",
           "value": [{
             "label": "Default",
-            "value": "53"
+            "value": "10"
           },{
             "label": "Blood",
-            "value": "54"
+            "value": "64"
           },{
             "label": "Midnight",
-            "value": "55"
+            "value": "65"
           },{
             "label": "Moss",
-            "value": "56"
+            "value": "66"
           },{
             "label": "Royal",
-            "value": "57"
+            "value": "67"
           },{
             "label": "Wight",
-            "value": "58"
+            "value": "68"
           }]
         }, {
           "label": "Reinhardt",
           "value": [{
             "label": "Default",
-            "value": "59"
+            "value": "11"
           },{
             "label": "Blackhardt",
-            "value": "108"
+            "value": "69"
           },{
             "label": "Cobalt",
-            "value": "60"
+            "value": "70"
           },{
             "label": "Veridian",
-            "value": "61"
+            "value": "71"
           }]
         }, {
           "label": "Roadhog",
           "value": [{
             "label": "Default",
-            "value": "62"
+            "value": "12"
           },{
             "label": "Kiwi",
-            "value": "63"
+            "value": "72"
           },{
             "label": "Stitched",
-            "value": "64"
+            "value": "73"
           },{
             "label": "Thistle",
-            "value": "65"
+            "value": "74"
           }]
         }, {
           "label": "Soldier 76",
           "value": [{
             "label": "Default",
-            "value": "66"
+            "value": "13"
           },{
             "label": "Jet",
-            "value": "67"
+            "value": "75"
           },{
             "label": "Olive",
-            "value": "68"
+            "value": "76"
           },{
             "label": "Smoke",
-            "value": "69"
+            "value": "77"
           }]
         }, {
           "label": "Symmetra",
           "value": [{
             "label": "Default",
-            "value": "70"
+            "value": "14"
           },{
             "label": "Cardamom",
-            "value": "71"
+            "value": "78"
           },{
             "label": "Hyacinth",
-            "value": "72"
+            "value": "79"
           },{
             "label": "Saffron",
-            "value": "73"
+            "value": "80"
           },{
             "label": "Technomancer",
-            "value": "74"
+            "value": "81"
           },{
             "label": "Utopaea",
-            "value": "75"
+            "value": "82"
           }]
         }, {
           "label": "Torbjorn",
           "value": [{
             "label": "Default",
-            "value": "76"
+            "value": "15"
           },{
             "label": "Bla",
-            "value": "77"
+            "value": "83"
           },{
             "label": "Citron",
-            "value": "78"
+            "value": "84"
           },{
             "label": "Gron",
-            "value": "79"
+            "value": "85"
           },{
             "label": "Plommon",
-            "value": "80"
+            "value": "86"
           }]
         }, {
           "label": "Tracer",
           "value": [{
             "label": "Default",
-            "value": "81"
+            "value": "16"
           },{
             "label": "Electric Purple",
-            "value": "82"
+            "value": "87"
           },{
             "label": "Hot Pink",
-            "value": "83"
+            "value": "88"
           },{
             "label": "Neon Green",
-            "value": "84"
+            "value": "89"
           },{
             "label": "Posh",
-            "value": "85"
+            "value": "90"
           },{
             "label": "Royal Blue",
-            "value": "86"
+            "value": "91"
           }]
         }, {
           "label": "Widowmaker",
           "value": [{
             "label": "Default",
-            "value": "87"
+            "value": "17"
           },{
             "label": "Ciel",
-            "value": "88"
+            "value": "92"
           },{
             "label": "Rose",
-            "value": "89"
+            "value": "93"
           },{
             "label": "Vert",
-            "value": "90"
+            "value": "94"
           },{
             "label": "Winter",
-            "value": "91"
+            "value": "95"
           }]
         }, {
           "label": "Winston",
           "value": [{
             "label": "Default",
-            "value": "92"
+            "value": "18"
           },{
             "label": "Atmosphere",
-            "value": "93"
+            "value": "96"
           },{
             "label": "Banana",
-            "value": "94"
+            "value": "97"
           },{
             "label": "Forest",
-            "value": "95"
+            "value": "98"
           },{
             "label": "Red Planet",
-            "value": "96"
+            "value": "99"
           }]
         }, {
           "label": "Zarya",
           "value": [{
             "label": "Default",
-            "value": "97"
+            "value": "19"
           },{
             "label": "Brick",
-            "value": "98"
-          },{
-            "label": "Dawn",
-            "value": "99"
-          },{
-            "label": "Goldenrod",
             "value": "100"
           },{
-            "label": "Taiga",
+            "label": "Dawn",
             "value": "101"
           },{
-            "label": "Violet",
+            "label": "Goldenrod",
             "value": "102"
+          },{
+            "label": "Taiga",
+            "value": "103"
+          },{
+            "label": "Violet",
+            "value": "104"
           }]
         }, {
           "label": "Zenyatta",
           "value": [{
             "label": "Default",
-            "value": "103"
+            "value": "20"
           },{
             "label": "Air",
-            "value": "104"
-          },{
-            "label": "Ascendant",
             "value": "105"
           },{
-            "label": "Leaf",
+            "label": "Ascendant",
             "value": "106"
           },{
-            "label": "Water",
+            "label": "Leaf",
             "value": "107"
+          },{
+            "label": "Water",
+            "value": "108"
           }]
         }]
       },
-
+              
+      {
+        "type": "select",
+        "capabilities": ["PLATFORM_APLITE"],
+        "messageKey": "Hero",
+        "defaultValue": "1000",
+        "label": "Hero",
+        "options": [{
+          "label": "Random",
+          "value": "1000"
+        }, {
+          "label": "Ana",
+          "value": "21"
+        }, {
+          "label": "Bastion",
+          "value": "0"
+        }, {
+          "label": "Dva",
+          "value": "1"
+        }, {
+          "label": "Genji",
+          "value": "2"
+        }, {
+          "label": "Hanzo",
+          "value": "3"
+        }, {
+          "label": "Junkrat",
+          "value": "4"
+        }, {
+          "label": "Lucio",
+          "value": "5"
+        }, {
+          "label": "McCree",
+          "value": "6"
+        }, {
+          "label": "Mei",
+          "value": "7"
+        }, {
+          "label": "Mercy",
+          "value": "8"
+        }, {
+          "label": "Pharah",
+          "value": "9"
+        }, {
+          "label": "Reaper",
+          "value": "10"
+        }, {
+          "label": "Reinhardt",
+          "value": "11"
+        }, {
+          "label": "Roadhog",
+          "value": "12"
+        }, {
+          "label": "Soldier 76",
+          "value": "13"
+        }, {
+          "label": "Symmetra",
+          "value": "14"
+        }, {
+          "label": "Torbjorn",
+          "value": "15"
+        }, {
+          "label": "Tracer",
+          "value": "16"
+        }, {
+          "label": "Widowmaker",
+          "value": "17"
+        }, {
+          "label": "Winston",
+          "value": "18"
+        }, {
+          "label": "Zarya",
+          "value": "19"
+        }, {
+          "label": "Zenyatta",
+          "value": "20"
+        }]
+      },  
       {
         "type": "toggle",
         "messageKey": "HourlyVibe",
@@ -422,7 +517,7 @@ module.exports = [{
         "messageKey": "Flick",
         "defaultValue": "2",
         "label": "Flick Settings",
-        "description": "Choosing Off prevents view of Battery and Bluetooth.",
+        "description": "Choosing 'Off' prevents the view of Output 3 and 4.",
         "options": [{
           "label": "Off",
           "value": "0"
@@ -436,7 +531,114 @@ module.exports = [{
       },
     ]
   },
-
+              
+  {
+    "type": "section",
+    "items": [{
+      "type": "heading",
+      "defaultValue": "Output",
+      }, {
+      "type": "select",
+      "messageKey": "Comp1",
+      "defaultValue": "3",
+      "label": "Output 1",
+      "description" : "Primary output, displays on left hand side.",
+      "options": [{
+        "label": "Battery",
+        "value": "1"
+      }, {
+        "label": "Bluetooth",
+        "value": "2"
+      }, {
+        "label": "Date",
+        "value": "3"
+      }, {
+        "label": "Steps",
+        "value": "4"
+      },{
+        "label": "Temperature",
+        "value": "5"
+      },{
+        "label": "Weekday",
+        "value": "6"
+      }]
+    }, {
+      "type": "select",
+      "messageKey": "Comp2",
+      "defaultValue": "5",
+      "label": "Output 2",
+      "description" : "Primary output, displays on right hand side.",
+      "options": [{
+        "label": "Battery",
+        "value": "1"
+      }, {
+        "label": "Bluetooth",
+        "value": "2"
+      }, {
+        "label": "Date",
+        "value": "3"
+      }, {
+        "label": "Steps",
+        "value": "4"
+      },{
+        "label": "Temperature",
+        "value": "5"
+      },{
+        "label": "Weekday",
+        "value": "6"
+      }]
+    }, {
+      "type": "select",
+      "messageKey": "Comp3",
+      "defaultValue": "2",
+      "label": "Output 3",
+      "description" : "Secondary output, displays on left hand side when watchface is flicked.",
+      "options": [{
+        "label": "Battery",
+        "value": "1"
+      }, {
+        "label": "Bluetooth",
+        "value": "2"
+      }, {
+        "label": "Date",
+        "value": "3"
+      }, {
+        "label": "Steps",
+        "value": "4"
+      },{
+        "label": "Temperature",
+        "value": "5"
+      },{
+        "label": "Weekday",
+        "value": "6"
+      }]
+    }, {
+      "type": "select",
+      "messageKey": "Comp4",
+      "defaultValue": "1",
+      "label": "Output 4",
+      "description" : "Secondary output, displays on right hand side when watchface is flicked.",
+      "options": [{
+        "label": "Battery",
+        "value": "1"
+      }, {
+        "label": "Bluetooth",
+        "value": "2"
+      }, {
+        "label": "Date",
+        "value": "3"
+      }, {
+        "label": "Steps",
+        "value": "4"
+      },{
+        "label": "Temperature",
+        "value": "5"
+      },{
+        "label": "Weekday",
+        "value": "6"
+      }]
+    }
+  ]},
   {
     "type": "section",
     "items": [{
@@ -457,7 +659,7 @@ module.exports = [{
     }, {
       "type": "input",
       "messageKey": "API",
-      "defaultValue": " ",
+      "defaultValue": "",
       "label": "API Key",
       "description": "An API key is required to fetch weather data. These can be freely obtained from OpenWeatherMap.org or WUnderground.com.",
     }, {
@@ -491,7 +693,7 @@ module.exports = [{
     }, {
       "type": "input",
       "messageKey": "City",
-      "defaultValue": " ",
+      "defaultValue": "",
       "label": "City",
       "description": "Leave blank to use GPS signal.",
     }]
