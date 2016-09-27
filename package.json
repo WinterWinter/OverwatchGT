@@ -1,7 +1,7 @@
 {
     "author": "Game Time",
     "dependencies": {
-        "pebble-clay": "1.0.0"
+        "pebble-clay": "^1.0.2"
     },
     "keywords": [],
     "name": "overwatch-gt",
@@ -32,7 +32,7 @@
         "resources": {
             "media": [
                 {
-                    "file": "images/Ana Touquoise.png",
+                    "file": "images/Ana Turquoise.png",
                     "name": "Ana_Turquoise",
                     "targetPlatforms": [
                         "basalt",
@@ -229,7 +229,10 @@
                 {
                     "file": "images/Hanzo Cloud.png",
                     "name": "Hanzo_Cloud",
-                    "targetPlatforms": null,
+                    "targetPlatforms": [
+                        "basalt",
+                        "chalk"
+                    ],
                     "type": "png"
                 },
                 {
@@ -869,13 +872,19 @@
                 {
                     "file": "images/Widowmaker Vert.png",
                     "name": "Widowmaker_Vert",
-                    "targetPlatforms": null,
+                    "targetPlatforms": [
+                        "basalt",
+                        "chalk"
+                    ],
                     "type": "png"
                 },
                 {
                     "file": "images/Widowmaker Winter.png",
                     "name": "Widowmaker_Winter",
-                    "targetPlatforms": null,
+                    "targetPlatforms": [
+                        "basalt",
+                        "chalk"
+                    ],
                     "type": "png"
                 },
                 {
@@ -1025,12 +1034,13 @@
         "targetPlatforms": [
             "aplite",
             "basalt",
-            "chalk"
+            "chalk",
+            "diorite"
         ],
         "uuid": "92368a72-5aea-4283-a61b-d8599b0a156a",
         "watchapp": {
             "watchface": true
         }
     },
-    "version": "1.9.0"
+    "version": "2.1.0"
 }

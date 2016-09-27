@@ -6,6 +6,7 @@ static TextLayer *s_time_layer;
 static int battery_level;
 
 static bool toggle = true;
+static bool blue_connect;
 
 int weather_interval = 30;
 int flick = 1;
@@ -34,8 +35,8 @@ int HEROES = PBL_IF_BW_ELSE(22,114); // Random Generation
 static GBitmap *hero_images[TOTAL_HERO];
 static BitmapLayer *hero_layers[TOTAL_HERO];
 
-#if defined(PBL_PLATFORM_APLITE)
- // Aplite array
+#if defined(PBL_BW)
+ // Black and White array
 const int hero[] = {
   RESOURCE_ID_Bastion,
 	RESOURCE_ID_Dva,
@@ -194,29 +195,19 @@ const int ui[] = {
 
 static void set_container_image(GBitmap **bmp_image, BitmapLayer *bmp_layer, const int resource_id, GPoint origin)
 {
-  /*
-  load_buffer = malloc_low(3500);
-	size_t png_size; 
-	size_t mResource_size;
-	mResource_size = resource_size(resource_get_handle(RESOURCE_ID_MENU_IMAGE));
-	APP_LOG(APP_LOG_LEVEL_DEBUG,"resource_size: %d", (int) mResource_size);
-	png_size = resource_load(resource_get_handle(RESOURCE_ID_MENU_IMAGE),load_buffer, mResource_size);
-	APP_LOG(APP_LOG_LEVEL_DEBUG,"png_size: %d", (int) png_size);
-	mBitmap = gbitmap_create_from_png_data(load_buffer, png_size);
-  */
-  
 	GBitmap *old_image = *bmp_image;
+  
+  if (old_image != NULL) {
+		gbitmap_destroy(old_image);
+	}
+  
 	*bmp_image = gbitmap_create_with_resource(resource_id);
   GRect frame = (GRect) {
 		.origin = origin,
 		.size = gbitmap_get_bounds(*bmp_image).size
 	};
 	bitmap_layer_set_bitmap(bmp_layer, *bmp_image);
-	layer_set_frame(bitmap_layer_get_layer(bmp_layer), frame);
-    
-	if (old_image != NULL) {
-		gbitmap_destroy(old_image);
-	}
+	layer_set_frame(bitmap_layer_get_layer(bmp_layer), frame);	
 }
 
 static void show (){
@@ -266,25 +257,27 @@ static void battery_callback(BatteryChargeState state) {
 }
 
 static void handle_bluetooth(bool connected)
-{
+{ 
 	if (connected) {
 		 
     if(comp1 == 2){text_layer_set_text(comp1_layer, "On");}
     else if(comp2 == 2){text_layer_set_text(comp2_layer, "On");}
     else if(comp3 == 2){text_layer_set_text(comp3_layer, "On");}
     else if(comp4 == 2){text_layer_set_text(comp4_layer, "On");}
-		
-		if (!initiate_watchface) {//watch becomes connected after watchface is already loaded
+    
+		blue_connect = true;
+		if (!initiate_watchface) {//Watch reconnects while the watchface is being displayed or is connected when watch starts up
 		}
 	}
 	else {
-		
+    
     if(comp1 == 2){text_layer_set_text(comp1_layer, "Off");}
     else if(comp2 == 2){text_layer_set_text(comp2_layer, "Off");}
     else if(comp3 == 2){text_layer_set_text(comp3_layer, "Off");}
     else if(comp4 == 2){text_layer_set_text(comp4_layer, "Off");}
 		
-		if (!initiate_watchface) {//becomes disconnected while watchface is already loaded
+    blue_connect = false;
+		if (!initiate_watchface) {//Watch disconnects while watchface is being displayed or is disconnected when watch starts up
 			vibes_enqueue_custom_pattern( (VibePattern) {
 				.durations = (uint32_t []) {100, 100, 100, 100, 100},
 				.num_segments = 5
@@ -330,8 +323,8 @@ static void update_time() {
 
 static void update_display(struct tm *current_time) {
 	
-	if( ( (current_time->tm_hour != 12) && (current_time->tm_min == 0) && (current_time->tm_sec == 0)) || (initiate_watchface == true) ){
-		
+	if( ( (current_time->tm_hour != 12)  && (current_time->tm_min == 0) && (current_time->tm_sec == 0)) || (initiate_watchface == true) ){
+    
     int r = rand() % HEROES;
     //APP_LOG(APP_LOG_LEVEL_INFO, "Random Number: %d", r);
     
@@ -341,9 +334,9 @@ static void update_display(struct tm *current_time) {
 }
 
 static void update_bg(struct tm *current_time) {
-	
+  
 	if (current_time->tm_hour >= 5 && current_time->tm_hour < 12){
-    
+    //Morning
 		set_container_image(&ui_images[0], ui_layers[0], ui[0], GPoint( 0, 0));
 	}
 	else if (current_time->tm_hour >= 12 && current_time->tm_hour < 17){
@@ -359,6 +352,7 @@ static void update_bg(struct tm *current_time) {
 		//Night
 		set_container_image(&ui_images[0], ui_layers[0], ui[3], GPoint( 0, 0));
 	}
+
 }
 
 static void hourly_vibrate(struct tm *current_time){
@@ -373,7 +367,7 @@ static void hourly_vibrate(struct tm *current_time){
 static void tick_handler(struct tm *tick_time, TimeUnits units_changed) {
 	update_time();
 	
-	if(hero_choice == 1000 && (tick_time->tm_min == 0) && (tick_time->tm_sec == 0)){
+	if(hero_choice == 1000  && (tick_time->tm_min == 0) && (tick_time->tm_sec == 0)){
 		update_display(tick_time);
 	}
   
@@ -400,7 +394,7 @@ static void tick_handler(struct tm *tick_time, TimeUnits units_changed) {
 	
   //APP_LOG(APP_LOG_LEVEL_INFO, "Weather Interval: %d", weather_interval);
 	
-	if(tick_time->tm_min % weather_interval == 0) {
+	if(tick_time->tm_min % weather_interval == 0 && blue_connect) {
     DictionaryIterator *iter;
     app_message_outbox_begin(&iter);
     dict_write_uint8(iter, 0, 0);
@@ -436,10 +430,25 @@ static void handle_health(HealthEventType event, void *context)
 		}
 }
 
-static void prv_inbox_received_handler(DictionaryIterator *iter, void *context) {
+static void temp(){
   
   static char temperature_buffer[8];
-  static char weather_layer_buffer[32];
+  
+  if(persist_exists(MESSAGE_KEY_Temperature)){
+    int stored_temp = persist_read_int(MESSAGE_KEY_Temperature);
+    snprintf(temperature_buffer, sizeof(temperature_buffer), "%d°", stored_temp);
+  }
+  else{
+    snprintf(temperature_buffer, sizeof(temperature_buffer), "N/A");
+  }
+  
+  if(comp1 == 5){text_layer_set_text(comp1_layer, temperature_buffer);}
+  else if(comp2 == 5){text_layer_set_text(comp2_layer, temperature_buffer);}
+  else if(comp3 == 5){text_layer_set_text(comp3_layer, temperature_buffer);}
+  else if(comp4 == 5){text_layer_set_text(comp4_layer, temperature_buffer);}
+}
+
+static void prv_inbox_received_handler(DictionaryIterator *iter, void *context) {
   
   Tuple *hero_t = dict_find(iter, MESSAGE_KEY_Hero);
   if(hero_t) {
@@ -482,11 +491,11 @@ static void prv_inbox_received_handler(DictionaryIterator *iter, void *context) 
   } 
   
   Tuple *temperature_t = dict_find(iter, MESSAGE_KEY_Temperature);
-  if(temperature_t) { 
+  if(temperature_t) {
     temperature = temperature_t->value->int32;
-    
-    snprintf(temperature_buffer, sizeof(temperature_buffer), "%d°", temperature);
-    
+        
+    persist_write_int(MESSAGE_KEY_Temperature, temperature);
+    temp();
     //APP_LOG(APP_LOG_LEVEL_INFO, "Temperature: %d", temperature);
   } 
   
@@ -534,17 +543,10 @@ static void prv_inbox_received_handler(DictionaryIterator *iter, void *context) 
     
     persist_write_int(MESSAGE_KEY_Comp4, comp4);
   }
-
-  snprintf(weather_layer_buffer, sizeof(weather_layer_buffer), "%s", temperature_buffer);
-  
-  if(comp1 == 5){text_layer_set_text(comp1_layer, weather_layer_buffer);}
-  else if(comp2 == 5){text_layer_set_text(comp2_layer, weather_layer_buffer);}
-  else if(comp3 == 5){text_layer_set_text(comp3_layer, weather_layer_buffer);}
-  else if(comp4 == 5){text_layer_set_text(comp4_layer, weather_layer_buffer);} 
   
   update_time();
   battery_callback(battery_state_service_peek());
-  handle_bluetooth(bluetooth_connection_service_peek());
+  handle_bluetooth(connection_service_peek_pebble_app_connection());
   health_service_events_subscribe(handle_health, NULL);
 }
 
@@ -719,7 +721,7 @@ static void init() {
 	// Ensure battery level is displayed from the start
 	battery_callback(battery_state_service_peek());
 	
-	handle_bluetooth(bluetooth_connection_service_peek());
+	handle_bluetooth(connection_service_peek_pebble_app_connection());
 	bluetooth_connection_service_subscribe(&handle_bluetooth);
   
   health_service_events_subscribe(handle_health, NULL);
@@ -735,13 +737,15 @@ static void init() {
   app_message_register_outbox_failed(outbox_failed_callback);
   app_message_register_outbox_sent(outbox_sent_callback);
   app_message_open(500,500);
+  
+  temp();
 }
 
 static void deinit() {
 	// Destroy Window
 	window_destroy(s_main_window);
 	bluetooth_connection_service_unsubscribe();
-	bluetooth_connection_service_peek();
+	connection_service_peek_pebble_app_connection();
 }
 
 int main(void) {

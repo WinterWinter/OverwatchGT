@@ -2,7 +2,6 @@ module.exports = [{
     "type": "heading",
     "defaultValue": "Overwatch GT"
   },
-
   {
     "type": "section",
     "items": [{
@@ -10,7 +9,7 @@ module.exports = [{
         "defaultValue": "General"
       }, {
         "type": "select",
-        "capabilities": ["NOT_PLATFORM_APLITE"],
+        "capabilities": ["COLOR"],
         "messageKey": "Hero",
         "defaultValue": "1000",
         "label": "Hero",
@@ -430,7 +429,7 @@ module.exports = [{
               
       {
         "type": "select",
-        "capabilities": ["PLATFORM_APLITE"],
+        "capabilities": ["BW"],
         "messageKey": "Hero",
         "defaultValue": "1000",
         "label": "Hero",
